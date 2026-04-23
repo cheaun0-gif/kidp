@@ -188,10 +188,10 @@
       padding-bottom: var(--gap);
     }
 
-    /* color/11, 22, 333 — 3등분 가로 배치 */
+    /* color/11, 22 — 2등분 가로 배치 */
     .color-trio {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: var(--gap);
       background: var(--line);
     }
@@ -208,19 +208,6 @@
       transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .color-item:hover img { transform: scale(1.025); }
-
-    .color-tag {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: rgba(255,255,255,0.82);
-      padding: 5px 11px;
-      backdrop-filter: blur(4px);
-    }
 
     /* ══════════════════════════════
        § 4  CLOSING
@@ -368,7 +355,7 @@
 
       .hero-trio { grid-template-columns: 1fr; }
       .use-duo   { grid-template-columns: 1fr; }
-      .color-trio { grid-template-columns: 1fr; }
+      .color-trio { grid-template-columns: 1fr; } /* 모바일: 1열 */
 
       .section-meta { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
       .closing-overlay { left: 24px; right: 24px; }
@@ -458,22 +445,16 @@
 
     <div class="section-meta reveal">
       <span class="s-title">Colors</span>
-      <span class="s-label">Three Variations</span>
+      <span class="s-label">Two Variations</span>
     </div>
 
-    <!-- color/11, 22, 333 : 3등분 가로 배치 -->
+    <!-- color/11, 22 : 2등분 가로 배치 -->
     <div class="color-trio">
       <div class="color-item">
         <img src="color/11.png" alt="Siseon — Chalk" loading="lazy" />
-        <span class="color-tag">01 — Chalk</span>
       </div>
       <div class="color-item">
         <img src="color/22.png" alt="Siseon — Stone" loading="lazy" />
-        <span class="color-tag">02 — Stone</span>
-      </div>
-      <div class="color-item">
-        <img src="color/333.png" alt="Siseon — Moss" loading="lazy" />
-        <span class="color-tag">03 — Moss</span>
       </div>
     </div>
 
