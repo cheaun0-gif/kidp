@@ -99,9 +99,9 @@
       padding: 56px 48px 36px;
     }
     .section-meta .s-title {
-      font-size: clamp(30px, 3.5vw, 54px);
-      font-weight: 200;
-      letter-spacing: -0.03em;
+      font-size: clamp(22px, 2.6vw, 38px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
     .section-meta .s-label {
       font-size: 10px;
@@ -119,6 +119,58 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ══════════════════════════════
+       § 0  STUDIO
+    ══════════════════════════════ */
+    #studio {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 48px 64px;
+      background: var(--white);
+    }
+
+    .studio-header {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 64px;
+    }
+
+    .studio-name {
+      font-size: clamp(48px, 9vw, 120px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--black);
+    }
+
+    .studio-desc {
+      max-width: 540px;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #666;
+      letter-spacing: 0.01em;
+    }
+
+    .studio-photo {
+      width: 100%;
+      overflow: hidden;
+    }
+    .studio-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .studio-photo:hover img { transform: scale(1.015); }
+
+    @media (max-width: 768px) {
+      #studio { padding: 100px 24px 48px; }
     }
 
     /* ══════════════════════════════
@@ -286,8 +338,8 @@
     }
 
     .intro-product-name {
-      font-size: clamp(64px, 12vw, 160px);
-      font-weight: 200;
+      font-size: clamp(48px, 9vw, 120px);
+      font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 0.9;
       color: var(--black);
@@ -387,13 +439,30 @@
   <nav id="main-nav">
     <a href="#hero" class="nav-logo">Siseon</a>
     <ul class="nav-menu">
+      <li><a href="#studio">Studio</a></li>
       <li><a href="#use">Use</a></li>
       <li><a href="#color">Color</a></li>
       <li><a href="#closing">Story</a></li>
     </ul>
   </nav>
 
-  <!-- ══════════ § 0 PRODUCT INTRO ══════════ -->
+  <!-- ══════════ § 0 STUDIO ══════════ -->
+  <section id="studio">
+    <div class="studio-header">
+      <h1 class="studio-name reveal">HYEONG</h1>
+      <p class="studio-desc reveal">
+        hyeong is a design studio formed by two college students who are active in Korea.
+        It pursues user-friendly design based on ergonomics and molding, and presents witty objects
+        that naturally penetrate into everyday life. In addition, I would like to explore the unanswered area,
+        design future values, and explore various possibilities to make a positive impact on society.
+      </p>
+    </div>
+    <div class="studio-photo reveal">
+      <img src="studio/hyeong.png" alt="HYEONG studio" loading="eager" />
+    </div>
+  </section>
+
+  <!-- ══════════ § 1 PRODUCT INTRO ══════════ -->
   <section id="product-intro">
     <p class="intro-brand reveal">Siseon — Social Accountability Plant Care Device</p>
     <h2 class="intro-product-name reveal">Siseon</h2>
