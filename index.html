@@ -324,6 +324,24 @@
       #product-intro { padding: 100px 24px 60px; }
     }
 
+    /* ══════════════════════════════
+       § 5  OTHERS
+    ══════════════════════════════ */
+    #others { margin-top: 80px; }
+
+    /* others : 2등분 가로 배치 */
+    .others-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      background: var(--line);
+    }
+    .others-duo .img-block { background: var(--white); }
+
+    @media (max-width: 768px) {
+      .others-duo { grid-template-columns: 1fr; }
+    }
+
     /* ══ FOOTER ══ */
     footer {
       margin-top: 80px;
@@ -480,6 +498,24 @@
     <!-- 연출/2222 -->
     <div class="closing-second">
       <img src="연출/2222.png" alt="Siseon — final scene" loading="lazy" />
+    </div>
+
+  </section>
+
+  <!-- ══════════ § 5 OTHERS ══════════ -->
+  <section id="others">
+
+    <div class="section-meta reveal">
+      <span class="s-title">Others</span>
+    </div>
+
+    <div class="others-duo">
+      <div class="img-block reveal">
+        <img src="others/12.png" alt="Siseon — others 12" loading="lazy" />
+      </div>
+      <div class="img-block reveal">
+        <img src="others/13.png" alt="Siseon — others 13" loading="lazy" />
+      </div>
     </div>
 
   </section>
