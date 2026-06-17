@@ -3,7 +3,7 @@
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
-// TICTOC 브랜드 신규 4종 상품 마스터 데이터셋 (사용자 제공 상세페이지 및 제품대표이미지 폴더 매핑)
+// TICTOC 브랜드 신규 4종 상품 마스터 데이터셋 (상단 갤러리 영역에 상세페이지 이미지 혼합 없이 오직 제품대표이미지만 4개 활용)
 const productsData = {
   tictoc01: {
     id: 'tictoc01',
@@ -22,10 +22,9 @@ const productsData = {
     ],
     thumbnails: [
       '제품대표이미지/1.png',
-      '상세페이지/1.png',
-      '상세페이지/2.png',
-      '상세페이지/3.png',
-      '상세페이지/4.png'
+      '제품대표이미지/2.png',
+      '제품대표이미지/3.png',
+      '제품대표이미지/4.png'
     ],
     detailImages: [
       '상세페이지/1.png',
@@ -62,10 +61,9 @@ const productsData = {
     ],
     thumbnails: [
       '제품대표이미지/2.png',
-      '상세페이지/5.png',
-      '상세페이지/6.png',
-      '상세페이지/7.png',
-      '상세페이지/8.png'
+      '제품대표이미지/1.png',
+      '제품대표이미지/3.png',
+      '제품대표이미지/4.png'
     ],
     detailImages: [
       '상세페이지/3.png',
@@ -99,10 +97,9 @@ const productsData = {
     ],
     thumbnails: [
       '제품대표이미지/3.png',
-      '상세페이지/1.png',
-      '상세페이지/3.png',
-      '상세페이지/5.png',
-      '상세페이지/7.png'
+      '제품대표이미지/1.png',
+      '제품대표이미지/2.png',
+      '제품대표이미지/4.png'
     ],
     detailImages: [
       '상세페이지/1.png',
@@ -136,10 +133,9 @@ const productsData = {
     ],
     thumbnails: [
       '제품대표이미지/4.png',
-      '상세페이지/2.png',
-      '상세페이지/4.png',
-      '상세페이지/6.png',
-      '상세페이지/8.png'
+      '제품대표이미지/1.png',
+      '제품대표이미지/2.png',
+      '제품대표이미지/3.png'
     ],
     detailImages: [
       '상세페이지/2.png',
@@ -324,7 +320,7 @@ function initStudioCarousel() {
 }
 
 /**
- * 4. 가상 디바이스 시뮬레이터 동작 로직 (Siseon 전용이나 TICTOC에서는 비활성화 유지)
+ * 4. 가상 디바이스 시뮬레이터 동작 로직 (TICTOC에서는 비활성화 유지)
  */
 function initDeviceSimulator() {
   const shutterBtn = document.getElementById('simShutterBtn');
@@ -534,7 +530,7 @@ function renderProductDetail(productId) {
   document.getElementById('detailPrice').textContent = prod.price.toLocaleString();
   document.getElementById('detailBenefit').innerHTML = `네이버페이 포인트 최대 <strong>${Math.round(prod.price * 0.05).toLocaleString()}원</strong> 적립 (기본 적립 + 충전 결제 시)`;
 
-  // 5개의 썸네일 리스트 빌드
+  // 4개의 썸네일 리스트 빌드 (상세 이미지 혼합 없이 오직 제품대표이미지만 사용)
   const thumbContainer = document.getElementById('detailThumbnailList');
   thumbContainer.innerHTML = '';
   prod.thumbnails.forEach((thumb, idx) => {
@@ -567,7 +563,6 @@ function renderProductDetail(productId) {
     detailImgContainer.appendChild(imgTag);
   });
 
-  // TICTOC 4종 신규 브랜드에는 시뮬레이터 및 캐러셀 스킵 (hidden 유지)
   const simWrapper = document.getElementById('simulatorWrapper');
   const carouselWrapper = document.getElementById('carouselWrapper');
   simWrapper.classList.add('hidden');
