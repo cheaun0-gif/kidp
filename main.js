@@ -3,7 +3,7 @@
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
-// 5종 프리미엄 디자인 오브제 상품 마스터 데이터셋
+// 5종 프리미엄 디자인 오브제 상품 마스터 데이터셋 (각 제품별 정확히 5개의 대표 썸네일 탑재)
 const productsData = {
   siseon: {
     id: 'siseon',
@@ -20,7 +20,7 @@ const productsData = {
       { name: 'Chalk (초크 화이트 / 무광 매트 마감)', val: 'Chalk' },
       { name: 'Stone (스톤 그레이 / 거친 돌 텍스처 마감)', val: 'Stone' }
     ],
-    thumbnails: ['baisic/1.png', 'baisic/2.png', 'baisic/3.png', 'baisic/4.png'],
+    thumbnails: ['baisic/1.png', 'baisic/2.png', 'baisic/3.png', 'baisic/4.png', 'use/111.png'],
     detailImages: [
       'baisic/1.png',
       'baisic/2.png',
@@ -59,7 +59,7 @@ const productsData = {
       { name: 'Pure Clay (백자 백색 무광 마감)', val: 'Pure Clay' },
       { name: 'Dark Ash (옹기 흑색 반무광 마감)', val: 'Dark Ash' }
     ],
-    thumbnails: ['use/111.png', 'use/222.png', 'use/333.png', 'baisic/3.png'],
+    thumbnails: ['use/111.png', 'use/222.png', 'use/333.png', 'baisic/3.png', 'color/11.png'],
     detailImages: [
       'use/111.png',
       'use/222.png',
@@ -90,7 +90,7 @@ const productsData = {
       { name: 'Cirrus (새털구름 화이트 소프트 마감)', val: 'Cirrus' },
       { name: 'Nimbus (먹구름 딥 그레이 마감)', val: 'Nimbus' }
     ],
-    thumbnails: ['연출/1111.png', '연출/2222.png', 'baisic/2.png', 'use/222.png'],
+    thumbnails: ['연출/1111.png', '연출/2222.png', 'baisic/2.png', 'use/222.png', 'use/333.png'],
     detailImages: [
       '연출/1111.png',
       '연출/2222.png',
@@ -120,7 +120,7 @@ const productsData = {
       { name: 'Sand Beige (모래 사장 베이지 마감)', val: 'Sand Beige' },
       { name: 'Coral Pink (산호 적색 마감)', val: 'Coral Pink' }
     ],
-    thumbnails: ['color/22.png', 'color/11.png', 'use/333.png', 'baisic/4.png'],
+    thumbnails: ['color/22.png', 'color/11.png', 'use/333.png', 'baisic/4.png', '연출/1111.png'],
     detailImages: [
       'color/22.png',
       'color/11.png',
@@ -149,7 +149,7 @@ const productsData = {
       { name: 'Matte White (매트 화이트 마감)', val: 'Matte White' },
       { name: 'Charcoal Black (차콜 블랙 마감)', val: 'Charcoal Black' }
     ],
-    thumbnails: ['baisic/4.png', 'baisic/3.png', 'use/222.png', 'color/11.png'],
+    thumbnails: ['baisic/4.png', 'baisic/3.png', 'use/222.png', 'color/11.png', '연출/2222.png'],
     detailImages: [
       'baisic/4.png',
       'baisic/3.png',
@@ -463,7 +463,6 @@ function renderProductGrid() {
     gridContainer.appendChild(card);
   });
 
-  // 새로 동적 추가된 카드들을 위해 Reveal Observer 재설정
   const revealElements = gridContainer.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -490,14 +489,11 @@ function handleRouting() {
       goHome();
     }
   } else {
-    // 상품 상세 해시가 아니면 홈으로 세팅
     goHome();
   }
 }
 
-// 스토어 홈으로 복귀
 window.goHome = function() {
-  // 해시 클리어
   if (window.location.hash !== '') {
     history.pushState('', document.title, window.location.pathname + window.location.search);
   }
@@ -505,16 +501,13 @@ window.goHome = function() {
   document.getElementById('shop-home').classList.remove('hidden');
   document.getElementById('product-detail-view').classList.add('hidden');
 
-  // 네비 상세 탭바 링크 숨김
   document.getElementById('navDetailLink').classList.add('hidden');
   document.getElementById('navReviewLink').classList.add('hidden');
   document.getElementById('navQnaLink').classList.add('hidden');
 
-  // 활성화 메뉴 처리
   document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
   document.querySelector('.nav-menu a[onclick*="goHome"]').classList.add('active');
 
-  // 옵션 리스트 및 가격 연산 초기화
   selectedOptionsList = [];
   const container = document.getElementById('selectedOptionsContainer');
   if (container) container.innerHTML = '';
@@ -523,30 +516,24 @@ window.goHome = function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// 특정 상품 상세페이지로 가기
 window.navigateToProduct = function(productId) {
   window.location.hash = `#product/${productId}`;
 };
 
-// 동적 상세페이지 데이터 빌드 및 렌더링
 function renderProductDetail(productId) {
   currentProductId = productId;
   const prod = productsData[productId];
 
-  // 뷰 가시성 전환
   document.getElementById('shop-home').classList.add('hidden');
   document.getElementById('product-detail-view').classList.remove('hidden');
 
-  // 네비 상세 탭바 링크 표출
   document.getElementById('navDetailLink').classList.remove('hidden');
   document.getElementById('navReviewLink').classList.remove('hidden');
   document.getElementById('navQnaLink').classList.remove('hidden');
 
-  // 네비게이션 메뉴 상태 변경
   document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
   document.getElementById('navDetailLink').classList.add('active');
 
-  // 1. 상세 영역 정보 세팅
   document.getElementById('shopMainImg').src = prod.thumbnails[0];
   document.getElementById('detailBrand').textContent = prod.brand;
   document.getElementById('detailTitle').textContent = prod.name;
@@ -558,7 +545,7 @@ function renderProductDetail(productId) {
   document.getElementById('detailPrice').textContent = prod.price.toLocaleString();
   document.getElementById('detailBenefit').innerHTML = `네이버페이 포인트 최대 <strong>${Math.round(prod.price * 0.05).toLocaleString()}원</strong> 적립 (기본 적립 + 충전 결제 시)`;
 
-  // 2. 썸네일 리스트 빌드
+  // 5개의 썸네일 리스트 빌드
   const thumbContainer = document.getElementById('detailThumbnailList');
   thumbContainer.innerHTML = '';
   prod.thumbnails.forEach((thumb, idx) => {
@@ -569,7 +556,6 @@ function renderProductDetail(productId) {
     thumbContainer.appendChild(thumbDiv);
   });
 
-  // 3. 옵션 드롭다운 빌드
   const optionDropdown = document.getElementById('colorSelect');
   optionDropdown.innerHTML = `<option value="" disabled selected>[필수] 옵션을 선택하세요</option>`;
   prod.options.forEach(opt => {
@@ -579,7 +565,6 @@ function renderProductDetail(productId) {
     optionDropdown.appendChild(optTag);
   });
 
-  // 4. 상품 상세 본문 - 세로 나열형 이미지 동적 생성
   document.getElementById('detailSectionTitle').textContent = prod.name.split('—')[0].trim();
   document.getElementById('detailSectionDesc').textContent = prod.description;
   
@@ -593,7 +578,6 @@ function renderProductDetail(productId) {
     detailImgContainer.appendChild(imgTag);
   });
 
-  // 5. 조건부 시뮬레이터 및 캐러셀 노출 제어 (Siseon 제품 한정)
   const simWrapper = document.getElementById('simulatorWrapper');
   const carouselWrapper = document.getElementById('carouselWrapper');
   if (productId === 'siseon') {
@@ -604,7 +588,6 @@ function renderProductDetail(productId) {
     carouselWrapper.classList.add('hidden');
   }
 
-  // 6. 탭 만족도 별점 스코어보드 연동
   document.getElementById('detailRatingScore').textContent = prod.rating;
   const reviewScoreBars = document.getElementById('reviewScoreBars');
   const fiveStarsPercent = productId === 'moong' ? '100%' : (productId === 'siseon' ? '92%' : '88%');
@@ -629,7 +612,6 @@ function renderProductDetail(productId) {
     </div>
   `;
 
-  // 7. 상품별 동적 리뷰 목록 렌더링
   document.getElementById('reviewTotalCount').textContent = `${prod.reviewsCount}건`;
   document.getElementById('tabBtnReview').textContent = `리뷰 (${prod.reviewsCount})`;
   const reviewFeed = document.getElementById('reviewFeedContainer');
@@ -653,7 +635,6 @@ function renderProductDetail(productId) {
     reviewFeed.appendChild(card);
   });
 
-  // 8. 상품별 동적 Q&A 목록 렌더링
   document.getElementById('qnaTotalCount').textContent = `${prod.qna.length}건`;
   document.getElementById('tabBtnQna').textContent = `Q&A (${prod.qna.length})`;
   const qnaList = document.getElementById('qnaListContainer');
@@ -675,16 +656,13 @@ function renderProductDetail(productId) {
     qnaList.appendChild(qnaGroup);
   });
 
-  // 탭 상태 및 옵션 리셋
   selectedOptionsList = [];
   document.getElementById('selectedOptionsContainer').innerHTML = '';
   calculateTotalPrice();
   
-  // 첫 번째 상세정보 탭 강제 활성화
   const defaultTabBtn = document.getElementById('tabBtnDetail');
   switchTab('detail', defaultTabBtn);
 
-  // 스크롤 상단 이동
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -697,7 +675,6 @@ window.selectOption = function(selectElement) {
 
   const prod = productsData[currentProductId];
 
-  // 이미 선택된 옵션인지 체크
   const isExist = selectedOptionsList.some(item => item.option === optionValue);
   
   if (isExist) {
@@ -767,7 +744,6 @@ function calculateTotalPrice() {
   totalValElement.textContent = total.toLocaleString();
 }
 
-// 찜하기 버튼 토글
 window.toggleWish = function(button) {
   button.classList.toggle('active');
   if (button.classList.contains('active')) {
@@ -797,19 +773,16 @@ window.changeShopImage = function(imgSrc, element) {
  * 9. 상세 탭 스위칭 시스템
  */
 window.switchTab = function(tabName, element) {
-  // 탭 네비 버튼 상태 제어
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.remove('active');
   });
   element.classList.add('active');
   
-  // 네비바 메뉴 링크 싱크
   document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
   if (tabName === 'detail') document.getElementById('navDetailLink').classList.add('active');
   if (tabName === 'review') document.getElementById('navReviewLink').classList.add('active');
   if (tabName === 'qna') document.getElementById('navQnaLink').classList.add('active');
 
-  // 탭 콘텐츠 보이기 제어
   document.querySelectorAll('.tab-content').forEach(content => {
     content.classList.remove('active');
   });
@@ -820,16 +793,14 @@ window.switchTab = function(tabName, element) {
     targetContent.classList.add('active');
   }
 
-  // 탭 클릭 시 스크롤을 탭의 시작 지점으로 이동
   const tabsSection = document.getElementById('tabs-section');
   if (tabsSection) {
-    const yOffset = -70; // 헤더 높이 보정값
+    const yOffset = -70;
     const y = tabsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 };
 
-// Q&A 아코디언 펼치기
 window.toggleQnaAnswer = function(rowElement) {
   const answerBox = rowElement.nextElementSibling;
   if (answerBox && answerBox.classList.contains('qna-answer-box')) {
@@ -881,5 +852,5 @@ window.closeCheckoutModal = function() {
   selectedOptionsList = [];
   renderSelectedOptions();
   
-  goHome(); // 결제 후 홈으로 이동
+  goHome();
 };
