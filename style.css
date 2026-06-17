@@ -19,26 +19,28 @@
 
 /* 라이트 모드 */
 [data-theme="light"] {
-  --bg-primary: hsl(220, 15%, 97%);
-  --bg-secondary: hsl(220, 12%, 92%);
-  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-primary: hsl(0, 0%, 100%);
+  --bg-secondary: hsl(220, 18%, 98%);
+  --bg-card: rgba(255, 255, 255, 0.8);
   --text-primary: hsl(220, 20%, 10%);
-  --text-secondary: hsl(220, 10%, 42%);
-  --text-muted: hsl(220, 8%, 62%);
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-glow: rgba(0, 0, 0, 0.04);
+  --text-secondary: hsl(220, 10%, 40%);
+  --text-muted: hsl(220, 8%, 60%);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-glow: rgba(0, 0, 0, 0.02);
   
-  --accent: hsl(150, 70%, 40%);
+  /* 포인트 컬러 (에메랄드 그린) */
+  --accent: hsl(150, 70%, 38%);
   --accent-rgb: 30, 174, 110;
-  --accent-glow: rgba(30, 174, 110, 0.15);
+  --accent-glow: rgba(30, 174, 110, 0.12);
   
-  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
-  --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
-  --nav-bg: rgba(245, 245, 247, 0.85);
-  --price-color: #222;
+  /* 섀도우 */
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.04);
+  --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --price-color: #111111;
   
   /* 홈 배너 그라디언트 */
-  --banner-grad: linear-gradient(135deg, rgba(30, 174, 110, 0.05) 0%, rgba(30, 174, 110, 0.15) 100%);
+  --banner-grad: linear-gradient(135deg, rgba(30, 174, 110, 0.03) 0%, rgba(30, 174, 110, 0.08) 100%);
 }
 
 /* 다크 모드 (기본값) */
