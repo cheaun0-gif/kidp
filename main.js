@@ -1,13 +1,18 @@
 /**
- * Siseon 웹사이트 프리미엄 인터랙티브 스크립트 (main.js)
+ * Siseon 쇼핑몰 인터랙티브 스크립트 (main.js)
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
+
+// 선택된 상품 옵션을 담을 전역 상태 객체
+let selectedOptions = [];
+const PRODUCT_UNIT_PRICE = 189000; // 개당 가격 (189,000원)
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initScrollEffects();
   initStudioCarousel();
   initDeviceSimulator();
+  initTabSystem();
 });
 
 /**
@@ -17,15 +22,12 @@ function initTheme() {
   const themeToggle = document.getElementById('themeToggle');
   if (!themeToggle) return;
 
-  // 로컬 스토리지 또는 시스템 설정에서 테마 불러오기
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
-  // 초기 테마 설정 적용
   document.documentElement.setAttribute('data-theme', initialTheme);
 
-  // 테마 토글 버튼 클릭 이벤트
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -39,7 +41,6 @@ function initTheme() {
  * 2. 스크롤 페이드인 및 네비게이션 효과
  */
 function initScrollEffects() {
-  // 네비게이션 바 스크롤 시 스타일 변경
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -49,18 +50,17 @@ function initScrollEffects() {
     }
   }, { passive: true });
 
-  // Intersection Observer를 이용한 스크롤 페이드인 (.reveal)
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target); // 한 번 표시된 후 관찰 종료
+        revealObserver.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -50px 0px' // 화면 하단에서 약간 미리 올라오도록 설정
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
@@ -82,10 +82,8 @@ function initStudioCarousel() {
   let scrollLeft;
   let activeIndex = 0;
 
-  // 활성 슬라이드 클래스 업데이트 및 UI 갱신
   function updateCarouselState() {
-    // 트랙의 스크롤 위치를 기준으로 현재 중심에 위치한 슬라이드 계산
-    const slideWidth = slides[0].getBoundingClientRect().width + 40; // slide width + margin
+    const slideWidth = slides[0].getBoundingClientRect().width + 40;
     const currentScroll = track.scrollLeft;
     const centerIndex = Math.min(
       slides.length - 1,
@@ -97,20 +95,16 @@ function initStudioCarousel() {
       slides[centerIndex].classList.add('active');
       activeIndex = centerIndex;
       
-      // 카운터 텍스트 업데이트
       counter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
       
-      // 프로그레스 바 상태 업데이트
       const progressPercent = ((activeIndex + 1) / slides.length) * 100;
       progressBar.style.width = `${progressPercent}%`;
     }
   }
 
-  // 초기 활성화 상태 지정
   slides[0].classList.add('active');
   updateCarouselState();
 
-  // 마우스 드래그 이벤트 등록
   track.addEventListener('mousedown', (e) => {
     isDragging = true;
     track.classList.add('grabbing');
@@ -133,12 +127,11 @@ function initStudioCarousel() {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5; // 스크롤 감도 조절
+    const walk = (x - startX) * 1.5;
     track.scrollLeft = scrollLeft - walk;
     updateCarouselState();
   });
 
-  // 터치 이벤트 지원 (모바일)
   track.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].pageX - track.offsetLeft;
@@ -158,14 +151,12 @@ function initStudioCarousel() {
     updateCarouselState();
   }, { passive: true });
 
-  // 휠 스크롤 연동
   track.addEventListener('scroll', () => {
     if (!isDragging) {
       updateCarouselState();
     }
   }, { passive: true });
 
-  // 스크롤이 끝났을 때 중심 슬라이드로 부드럽게 고정(Snapping)
   function snapToCenter() {
     const slideWidth = slides[0].getBoundingClientRect().width + 40;
     const targetScroll = activeIndex * slideWidth;
@@ -195,7 +186,6 @@ function initDeviceSimulator() {
 
   let isShutterOpen = false;
 
-  // 셔터 토글 이벤트
   shutterBtn.addEventListener('click', () => {
     isShutterOpen = !isShutterOpen;
     if (isShutterOpen) {
@@ -208,7 +198,6 @@ function initDeviceSimulator() {
     updatePlantSimulator();
   });
 
-  // 슬라이더 값 변경 감지 및 UI 업데이트
   waterSlider.addEventListener('input', (e) => {
     waterVal.textContent = `${e.target.value}%`;
     updatePlantSimulator();
@@ -219,7 +208,6 @@ function initDeviceSimulator() {
     updatePlantSimulator();
   });
 
-  // 시뮬레이터 상태 분석 및 실시간 피드백 로직
   function updatePlantSimulator() {
     const water = parseInt(waterSlider.value);
     const pressure = parseInt(pressureSlider.value);
@@ -231,39 +219,32 @@ function initDeviceSimulator() {
     };
 
     if (!isShutterOpen) {
-      // 셔터가 닫혀있어 공유가 안 되는 상태
       status.icon = '🔒';
       status.title = '관찰 부재 (방치 위험)';
       status.desc = '타인의 시선이 차단되었습니다. 식물 관리가 무관심 속에 방치되기 시작할 수 있습니다.';
       statusIcon.style.color = 'hsl(350, 70%, 50%)';
       statusIcon.style.background = 'rgba(235, 87, 87, 0.1)';
     } else {
-      // 셔터가 열려 실시간 공유 중인 상태
       if (water < 30) {
-        // 수분 부족
         status.icon = '🍂';
         status.title = '수분 부족 (시듦 현상)';
         status.desc = '수분이 너무 적습니다! 실시간 상태가 타인의 시선에 그대로 공유되어 방치가 탄로납니다. 어서 물을 주십시오!';
         statusIcon.style.color = 'hsl(35, 80%, 50%)';
         statusIcon.style.background = 'rgba(242, 201, 76, 0.1)';
       } else if (water > 80) {
-        // 과습
         status.icon = '💧';
         status.title = '과습 주의 (뿌리 부패)';
         status.desc = '물이 과도하게 공급되었습니다. 과습 상태도 이웃들이 지켜보고 있으니 조절이 필요합니다.';
         statusIcon.style.color = 'hsl(200, 80%, 50%)';
         statusIcon.style.background = 'rgba(47, 128, 237, 0.1)';
       } else {
-        // 수분이 적절한 상태
         if (pressure < 40) {
-          // 공유 압박감이 너무 약함
           status.icon = '🌱';
           status.title = '안정적이지만 느슨함';
           status.desc = '수분은 적당하나, 시선의 압박이 적어 금방 관리 소홀로 이어질 수 있습니다. 공유율을 높여보세요.';
           statusIcon.style.color = 'hsl(148, 60%, 45%)';
           statusIcon.style.background = 'rgba(34, 197, 94, 0.1)';
         } else {
-          // 최상의 건강 상태 (시선의 압박 효과 톡톡)
           status.icon = '🌿';
           status.title = '완벽한 생장 상태 (시선 효과)';
           status.desc = '타인의 시선이 주는 긍정적인 자극으로 인해, 규칙적이고 꾸준한 케어가 이어집니다. 식물이 무성히 자랍니다!';
@@ -273,12 +254,216 @@ function initDeviceSimulator() {
       }
     }
 
-    // 화면 반영
     statusIcon.textContent = status.icon;
     statusTitle.textContent = status.title;
     statusDesc.textContent = status.desc;
   }
 
-  // 초기 1회 실행
   updatePlantSimulator();
 }
+
+/**
+ * 5. 쇼핑몰 이미지 선택 썸네일 제어
+ */
+window.changeShopImage = function(imgSrc, element) {
+  const mainImg = document.getElementById('shopMainImg');
+  if (mainImg) {
+    mainImg.src = imgSrc;
+  }
+  
+  // 모든 썸네일 비활성화 후 선택된 썸네일 활성화
+  document.querySelectorAll('.thumb-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  element.classList.add('active');
+};
+
+/**
+ * 6. 쇼핑 옵션 선택 로직 및 합계 연산
+ */
+window.selectOption = function(selectElement) {
+  const optionValue = selectElement.value;
+  if (!optionValue) return;
+
+  // 이미 선택된 옵션인지 체크
+  const isExist = selectedOptions.some(item => item.option === optionValue);
+  
+  if (isExist) {
+    alert('이미 추가된 옵션입니다. 하단의 수량을 조절해 주세요.');
+  } else {
+    // 옵션 리스트 상태 객체에 추가
+    selectedOptions.push({
+      option: optionValue,
+      quantity: 1,
+      price: PRODUCT_UNIT_PRICE
+    });
+    
+    // UI에 옵션 카드 렌더링
+    renderSelectedOptions();
+  }
+  
+  // 셀렉트 박스 다시 기본값으로 리셋
+  selectElement.selectedIndex = 0;
+};
+
+// 선택된 옵션 렌더링
+function renderSelectedOptions() {
+  const container = document.getElementById('selectedOptionsContainer');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  selectedOptions.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'selected-option-card';
+    card.innerHTML = `
+      <div class="card-top-row">
+        <span class="selected-opt-name">Siseon — ${item.option}</span>
+        <button class="btn-remove-opt" onclick="removeOption(${index})" title="옵션 삭제">×</button>
+      </div>
+      <div class="card-bottom-row">
+        <div class="quantity-control">
+          <button type="button" onclick="adjustQuantity(${index}, -1)">-</button>
+          <input type="text" value="${item.quantity}" readonly />
+          <button type="button" onclick="adjustQuantity(${index}, 1)">+</button>
+        </div>
+        <div class="opt-price-box">
+          <span>${(item.price * item.quantity).toLocaleString()}</span>원
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  
+  calculateTotalPrice();
+}
+
+// 수량 조절
+window.adjustQuantity = function(index, direction) {
+  if (direction === -1 && selectedOptions[index].quantity <= 1) {
+    alert('최소 수량은 1개입니다.');
+    return;
+  }
+  
+  selectedOptions[index].quantity += direction;
+  renderSelectedOptions();
+};
+
+// 옵션 제거
+window.removeOption = function(index) {
+  selectedOptions.splice(index, 1);
+  renderSelectedOptions();
+};
+
+// 총 합계 연산
+function calculateTotalPrice() {
+  const totalValElement = document.getElementById('totalPriceVal');
+  if (!totalValElement) return;
+
+  const total = selectedOptions.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  totalValElement.textContent = total.toLocaleString();
+}
+
+// 찜하기 버튼 토글
+window.toggleWish = function(button) {
+  button.classList.toggle('active');
+  if (button.classList.contains('active')) {
+    button.textContent = '❤️';
+    alert('상품을 찜 리스트에 담았습니다!');
+  } else {
+    button.textContent = '🤍';
+  }
+};
+
+/**
+ * 7. 하단 탭 시스템 및 스위칭
+ */
+function initTabSystem() {
+  // Q&A 아코디언은 탭 안쪽에 존재하므로 초기화 시 관여하지 않음
+}
+
+window.switchTab = function(tabName, element) {
+  // 탭 네비 버튼 상태 제어
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  element.classList.add('active');
+  
+  // 탭 콘텐츠 보이기 제어
+  document.querySelectorAll('.tab-content').forEach(content => {
+    content.classList.remove('active');
+  });
+  
+  const targetId = 'tabContent' + tabName.charAt(0).toUpperCase() + tabName.slice(1);
+  const targetContent = document.getElementById(targetId);
+  if (targetContent) {
+    targetContent.classList.add('active');
+  }
+
+  // 탭 클릭 시 스크롤을 탭의 시작 지점으로 이동
+  const tabsSection = document.getElementById('tabs-section');
+  if (tabsSection) {
+    const yOffset = -70; // 헤더 높이에 따른 보정값
+    const y = tabsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+};
+
+// Q&A 아코디언 펼치기
+window.toggleQnaAnswer = function(rowElement) {
+  const answerBox = rowElement.nextElementSibling;
+  if (answerBox && answerBox.classList.contains('qna-answer-box')) {
+    answerBox.classList.toggle('open');
+  }
+};
+
+/**
+ * 8. 네이버페이 결제 모달 팝업 제어
+ */
+window.openCheckoutModal = function() {
+  if (selectedOptions.length === 0) {
+    alert('구매하실 색상 옵션을 최소 1개 이상 선택해 주세요.');
+    return;
+  }
+  
+  const modal = document.getElementById('checkoutModal');
+  const loadingBox = document.getElementById('modalLoading');
+  const successBox = document.getElementById('modalSuccess');
+  
+  if (!modal || !loadingBox || !successBox) return;
+
+  // 모달 열기
+  modal.classList.add('open');
+  loadingBox.classList.remove('hidden');
+  successBox.classList.add('hidden');
+  
+  // 영수증 정보 빌드
+  const receiptProduct = document.getElementById('receiptProduct');
+  const receiptPrice = document.getElementById('receiptPrice');
+  
+  const productSummary = selectedOptions.map(item => `${item.option} (${item.quantity}개)`).join(', ');
+  const totalPrice = selectedOptions.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  receiptProduct.textContent = `Siseon — ${productSummary}`;
+  receiptPrice.textContent = `${totalPrice.toLocaleString()}원`;
+
+  // 1.5초 가상 결제 프로세스 지연 처리 (스피너 완료 효과)
+  setTimeout(() => {
+    loadingBox.classList.add('hidden');
+    successBox.classList.remove('hidden');
+  }, 1500);
+};
+
+window.closeCheckoutModal = function() {
+  const modal = document.getElementById('checkoutModal');
+  if (modal) {
+    modal.classList.remove('open');
+  }
+  
+  // 결제 완료 후 장바구니/옵션 초기화
+  selectedOptions = [];
+  renderSelectedOptions();
+  
+  // 스크롤 상단 이동
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
