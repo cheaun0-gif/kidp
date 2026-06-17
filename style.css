@@ -1,5 +1,5 @@
 /*
- * Siseon 쇼핑몰 통합 CSS 스타일시트 (style.css)
+ * Siseon 다중 상품 쇼핑몰 통합 CSS 스타일시트 (style.css)
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
@@ -36,6 +36,9 @@
   --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
   --nav-bg: rgba(245, 245, 247, 0.85);
   --price-color: #222;
+  
+  /* 홈 배너 그라디언트 */
+  --banner-grad: linear-gradient(135deg, rgba(30, 174, 110, 0.05) 0%, rgba(30, 174, 110, 0.15) 100%);
 }
 
 /* 다크 모드 (기본값) */
@@ -57,6 +60,9 @@
   --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
   --nav-bg: rgba(10, 11, 15, 0.85);
   --price-color: #ffffff;
+  
+  /* 홈 배너 그라디언트 */
+  --banner-grad: linear-gradient(135deg, rgba(34, 230, 137, 0.03) 0%, rgba(34, 230, 137, 0.08) 100%);
 }
 
 /* 기본 설정 */
@@ -77,6 +83,22 @@ html {
 body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
 /* ══ 글래스모피즘 스타일 ══ */
@@ -240,27 +262,249 @@ nav.scrolled {
   transform: translateY(0);
 }
 
-/* ══════════════════════════════
-   § SHOP MAIN (상품 상세 구매 페이지 상단)
-══════════════════════════════ */
-#product-shop {
-  min-height: 90vh;
-  padding: 130px 60px 60px;
-  background-color: var(--bg-primary);
-  display: flex;
-  align-items: center;
+.hidden {
+  display: none !important;
 }
 
-.shop-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
-  width: 100%;
+/* ══════════════════════════════
+   § SHOP HOME (메인 홈 스토어 목록 화면)
+══════════════════════════════ */
+#shop-home {
+  padding: 120px 60px 80px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* 좌측: 갤러리 */
+.home-hero-banner {
+  padding: 60px 80px;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 60px;
+  background: var(--banner-grad);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-premium);
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-content {
+  max-width: 600px;
+  z-index: 2;
+  position: relative;
+}
+
+.banner-sub {
+  font-family: var(--font-eng);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.banner-title {
+  font-family: var(--font-kor);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.banner-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-weight: 300;
+  word-break: keep-all;
+}
+
+/* 홈 섹션 구분선 */
+.home-section-header {
+  margin-bottom: 40px;
+}
+
+.home-section-header h2 {
+  font-family: var(--font-kor);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.home-section-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* 상품 그리드 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* 상품 카드 */
+.product-card {
+  padding: 24px;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border-color: var(--accent);
+}
+
+.prod-img-box {
+  width: 100%;
+  aspect-ratio: 1.15;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.prod-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prod-info-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.prod-brand {
+  font-family: var(--font-eng);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.prod-title {
+  font-family: var(--font-kor);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  height: 48px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.prod-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.prod-price-row .discount {
+  font-family: var(--font-eng);
+  font-size: 18px;
+  font-weight: 600;
+  color: hsl(350, 75%, 50%);
+}
+
+.prod-price-row .price {
+  font-family: var(--font-eng);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--price-color);
+}
+
+.prod-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.prod-meta .stars {
+  color: #f2c94c;
+}
+
+.prod-meta .rating {
+  font-family: var(--font-eng);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.prod-meta .reviews {
+  color: var(--text-muted);
+}
+
+
+/* ══════════════════════════════
+   § PRODUCT DETAIL VIEW (상세페이지 컨테이너)
+══════════════════════════════ */
+#product-detail-view {
+  padding-top: 80px;
+  animation: fadeInView 0.5s ease;
+}
+
+@keyframes fadeInView {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 목록으로 가기 바 */
+.detail-back-bar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 60px 10px;
+}
+
+.btn-back-home {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.btn-back-home .arrow {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.btn-back-home:hover {
+  color: var(--accent);
+}
+
+.btn-back-home:hover .arrow {
+  transform: translateX(-4px);
+}
+
+/* 구매 패널 그리드 */
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 60px 60px;
+}
+
+/* 좌측 갤러리 */
 .shop-gallery-wrapper {
   display: flex;
   flex-direction: column;
@@ -310,7 +554,7 @@ nav.scrolled {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* 우측: 상품 옵션 패널 */
+/* 우측 정보 패널 */
 .shop-info-panel {
   padding: 40px;
   border-radius: var(--border-radius-lg);
@@ -426,12 +670,7 @@ nav.scrolled {
   color: var(--text-secondary);
 }
 
-.meta-value strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* 옵션 박스 */
+/* 옵션 드롭다운 */
 .shop-option-box {
   display: flex;
   flex-direction: column;
@@ -456,7 +695,6 @@ nav.scrolled {
   outline: none;
   cursor: pointer;
   transition: var(--transition-fast);
-  /* 셀렉트 기본 화살표 스타일링 수정 */
   -webkit-appearance: none;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -511,7 +749,6 @@ nav.scrolled {
   color: var(--text-muted);
   cursor: pointer;
   font-size: 16px;
-  transition: var(--transition-fast);
 }
 
 .btn-remove-opt:hover {
@@ -541,7 +778,6 @@ nav.scrolled {
   color: var(--text-primary);
   font-size: 15px;
   cursor: pointer;
-  transition: var(--transition-fast);
 }
 
 .quantity-control button:hover {
@@ -620,7 +856,6 @@ nav.scrolled {
 .btn-buy:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
-  box-shadow: 0 12px 24px var(--accent-glow);
 }
 
 .btn-cart {
@@ -632,7 +867,6 @@ nav.scrolled {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition-fast);
 }
 
 .btn-cart:hover {
@@ -658,13 +892,13 @@ nav.scrolled {
 }
 
 /* ══════════════════════════════
-   § TABS SYSTEM (상세페이지 / 리뷰 / Q&A 전환 탭)
+   § TABS SYSTEM (상세페이지 상세 / 리뷰 / Q&A 탭바)
 ══════════════════════════════ */
 .sticky-tabs-container {
   position: sticky;
-  top: 68px; /* 네비게이션 헤더 높이와 일치 */
+  top: 68px;
   z-index: 900;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .tabs-nav {
@@ -728,7 +962,7 @@ nav.scrolled {
   display: block;
 }
 
-/* 탭 공통 헤더 */
+/* 탭 섹션 내부 헤더 */
 .tab-section-header {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 20px;
@@ -754,7 +988,374 @@ nav.scrolled {
 }
 
 /* ══════════════════════════════
-   § TAB 2 — 고객 리뷰 스타일
+   § TAB 1 — 상세페이지 이미지 세로 나열 레이아웃
+══════════════════════════════ */
+.detail-intro-desc {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.detail-intro-desc h2 {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.detail-intro-desc p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+/* 세로로 길게 나열하는 이미지 스타일 */
+.vertical-detail-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.vertical-detail-images img {
+  width: 100%;
+  max-width: 1000px; /* 너무 가로로 크게 퍼지지 않도록 폭 제한 */
+  height: auto;
+  margin-bottom: 2px; /* 깔끔하고 연속적인 스마트스토어 상세페이지 연출 */
+  display: block;
+  border-radius: 0;
+  border: none;
+}
+
+.vertical-detail-images img:first-child {
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+}
+
+.vertical-detail-images img:last-child {
+  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+  margin-bottom: 0;
+}
+
+/* 시뮬레이터 전용 구분 영역 */
+.simulator-section-divider {
+  max-width: 1000px;
+  margin: 80px auto 40px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 60px;
+}
+
+.simulator-section-divider h3 {
+  font-family: var(--font-eng);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.simulator-section-divider p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* 가상 디바이스 시뮬레이터 */
+.simulator-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.simulator-card {
+  padding: 40px;
+  border-radius: var(--border-radius-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.device-graphic {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+}
+
+.device-lens-outer {
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  background: #111;
+  border: 4px solid #333;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.device-lens-shutter {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: conic-gradient(from 0deg, #222 60deg, #151515 60deg 120deg, #2a2a2a 120deg 180deg, #1f1f1f 180deg 240deg, #333 240deg 300deg, #1c1c1c 300deg);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.device-lens-shutter.open {
+  transform: scale(0.05) rotate(180deg);
+}
+
+.device-lens-camera {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3b6bcf 0%, #081a3d 60%, #000 100%);
+  border: 2px solid #222;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.device-lens-glow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(4px);
+  opacity: 0.3;
+  transition: var(--transition-smooth);
+}
+
+.device-lens-shutter.open + .device-lens-camera .device-lens-glow {
+  opacity: 0.9;
+  transform: scale(1.5);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.device-dial {
+  position: absolute;
+  bottom: -10px;
+  width: 120px;
+  height: 32px;
+  background: linear-gradient(180deg, #555, #222);
+  border: 1px solid #777;
+  border-radius: 6px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+
+.dial-notch {
+  width: 2px;
+  height: 16px;
+  background: rgba(255,255,255,0.3);
+}
+
+.simulator-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sim-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-control-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.sim-control-label span.value {
+  color: var(--accent);
+  font-weight: 500;
+  font-family: var(--font-eng);
+}
+
+.sim-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
+  outline: none;
+}
+
+.sim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  cursor: pointer;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.sim-btn-shutter {
+  padding: 12px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-eng);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-top: 10px;
+}
+
+.sim-btn-shutter:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.simulator-feedback {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 18px 24px;
+  border-radius: var(--border-radius-md);
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.plant-status-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.plant-status-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.plant-status-text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* 3D 갤러리 캐러셀 */
+.studio-gallery {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.studio-track {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  padding: 20px 0;
+}
+
+.studio-track::-webkit-scrollbar {
+  display: none;
+}
+
+.studio-track.grabbing {
+  cursor: grabbing;
+}
+
+.studio-slide {
+  flex: 0 0 60vw;
+  margin-right: 30px;
+  scroll-snap-align: center;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.3, 1), filter 0.8s ease;
+  filter: brightness(0.4) blur(4px);
+  transform: scale(0.92);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.studio-slide.active {
+  filter: brightness(1) blur(0px);
+  transform: scale(1);
+}
+
+.studio-slide img {
+  width: 100%;
+  height: 38vh;
+  object-fit: cover;
+  display: block;
+}
+
+.studio-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 10px;
+}
+
+.studio-progress {
+  flex: 1;
+  height: 2px;
+  background: var(--border-color);
+  position: relative;
+  margin-right: 40px;
+  border-radius: 2px;
+}
+
+.studio-progress-bar {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  width: calc(100% / 7);
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 2px;
+}
+
+.studio-counter {
+  font-family: var(--font-eng);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════
+   § TAB 2 — 고객 리뷰 상세 스타일
 ══════════════════════════════ */
 .review-scoreboard {
   display: grid;
@@ -832,7 +1433,6 @@ nav.scrolled {
   color: var(--text-muted);
 }
 
-/* 리뷰 피드 */
 .review-feed {
   display: flex;
   flex-direction: column;
@@ -965,7 +1565,6 @@ nav.scrolled {
   font-size: 12px;
 }
 
-/* 문의 아코디언 답변 박스 */
 .qna-answer-box {
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
@@ -1011,7 +1610,6 @@ nav.scrolled {
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition-fast);
 }
 
 .btn-write-qna:hover {
@@ -1062,7 +1660,7 @@ nav.scrolled {
   font-family: var(--font-eng);
   font-size: 20px;
   font-weight: 600;
-  color: #03cf5d; /* 네이버 그린 */
+  color: #03cf5d;
   margin-bottom: 25px;
 }
 
@@ -1074,7 +1672,6 @@ nav.scrolled {
   padding: 20px 0;
 }
 
-/* 로딩 스피너 */
 .spinner {
   width: 40px;
   height: 40px;
@@ -1094,7 +1691,6 @@ nav.scrolled {
   color: var(--text-secondary);
 }
 
-/* 성공 메시지 */
 .modal-success-box {
   display: flex;
   flex-direction: column;
@@ -1173,56 +1769,52 @@ nav.scrolled {
   filter: brightness(1.1);
 }
 
-.hidden {
-  display: none !important;
-}
-
-/* ══════════════════════════════
-   기존 리모델링된 스튜디오 및 페이지 스타일 호환
-══════════════════════════════ */
-#studio {
-  min-height: auto;
-  padding: 40px 0 60px;
-}
-
-#product-intro {
-  min-height: auto;
-  padding: 60px 0;
-}
-
-.intro-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1.9fr;
-  gap: 50px;
-}
-
-#hero {
-  padding-top: 60px;
-}
-
-#closing {
-  margin-bottom: 60px;
-}
-
-/* ══ 반응형 쇼핑몰 스타일 ══ */
+/* ══ 반응형 스토어 스타일 ══ */
 @media (max-width: 1024px) {
-  #product-shop {
-    padding: 100px 30px 40px;
+  #shop-home {
+    padding: 100px 30px 60px;
+  }
+  .home-hero-banner {
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+  #product-detail-view {
+    padding-top: 60px;
+  }
+  .detail-back-bar {
+    padding: 20px 30px 10px;
   }
   .shop-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+    padding: 20px 30px 60px;
   }
   .tabs-content-wrapper {
     padding: 40px 30px 80px;
+  }
+  .simulator-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
   }
   .intro-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .studio-slide {
+    flex: 0 0 75vw;
+  }
 }
 
 @media (max-width: 768px) {
+  nav {
+    padding: 20px 30px;
+  }
+  nav.scrolled {
+    padding: 15px 30px;
+  }
+  .nav-menu {
+    display: none;
+  }
   .shop-info-panel {
     padding: 24px;
   }
@@ -1247,7 +1839,7 @@ nav.scrolled {
     padding-bottom: 24px;
   }
   .qna-header-row {
-    display: none; /* 모바일: 간소화된 아코디언 */
+    display: none;
   }
   .qna-row {
     grid-template-columns: 80px 1fr;
