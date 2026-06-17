@@ -3,171 +3,161 @@
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
-// 5종 프리미엄 디자인 오브제 상품 마스터 데이터셋 (각 제품별 정확히 5개의 대표 썸네일 탑재)
+// TICTOC 브랜드 신규 4종 상품 마스터 데이터셋 (사용자 제공 상세페이지 및 제품대표이미지 폴더 매핑)
 const productsData = {
-  siseon: {
-    id: 'siseon',
-    name: 'Siseon (시선) — 소셜 책임형 식물 케어 디바이스',
-    engName: 'Social Accountability Plant Care Device',
-    brand: 'Studio Hyeong',
+  tictoc01: {
+    id: 'tictoc01',
+    name: 'TICTOC Object 01 — 감성 아날로그 테이블 락',
+    engName: 'TICTOC Analog Table Rock',
+    brand: 'TICTOC',
     price: 189000,
-    originalPrice: 222000,
+    originalPrice: 220000,
     discount: '15%',
     rating: 4.9,
-    reviewsCount: 47,
-    description: '타인의 시선과 공동 관찰을 통해 반려식물의 건강을 지속하도록 돕는 프리미엄 스마트 화분 센서입니다.',
+    reviewsCount: 42,
+    description: '공간의 흐름을 부드럽게 가다듬는 TICTOC의 첫 번째 시그니처 세라믹 디자인 오브제입니다.',
     options: [
-      { name: 'Chalk (초크 화이트 / 무광 매트 마감)', val: 'Chalk' },
-      { name: 'Stone (스톤 그레이 / 거친 돌 텍스처 마감)', val: 'Stone' }
+      { name: 'Chalk White (매트 화이트 마감)', val: 'Chalk White' },
+      { name: 'Stone Gray (거친 돌 텍스처 마감)', val: 'Stone Gray' }
     ],
-    thumbnails: ['baisic/1.png', 'baisic/2.png', 'baisic/3.png', 'baisic/4.png', 'use/111.png'],
+    thumbnails: [
+      '제품대표이미지/1.png',
+      '상세페이지/1.png',
+      '상세페이지/2.png',
+      '상세페이지/3.png',
+      '상세페이지/4.png'
+    ],
     detailImages: [
-      'baisic/1.png',
-      'baisic/2.png',
-      'baisic/3.png',
-      'baisic/4.png',
-      'use/111.png',
-      'use/222.png',
-      'use/333.png',
-      'color/11.png',
-      'color/22.png',
-      '연출/1111.png',
-      '연출/2222.png'
+      '상세페이지/1.png',
+      '상세페이지/2.png',
+      '상세페이지/3.png',
+      '상세페이지/4.png',
+      '상세페이지/5.png',
+      '상세페이지/6.png',
+      '상세페이지/7.png',
+      '상세페이지/8.png'
     ],
     reviews: [
-      { id: 'plant_love***', date: '2026.06.12', option: 'Chalk', rating: '★★★★★', text: '식물 킬러였던 제가 시선 덕분에 몬스테라를 한 달 넘게 건강하게 기르고 있습니다! 셔터를 열 때 켜지는 불빛이 매일 식물을 보살피게 만드는 시각적 압박감을 주어 아주 유용합니다.' },
-      { id: 'design_***', date: '2026.06.05', option: 'Stone', rating: '★★★★★', text: '스톤 그레이 질감이 토분과 기가 막히게 잘 매칭됩니다. 기기 자체가 주는 인테리어 아우라가 엄청납니다. 실시간으로 다이얼을 만지며 조절하는 재미도 쏠쏠합니다.' },
-      { id: 'k-green***', date: '2026.05.28', option: 'Chalk', rating: '★★★★☆', text: '기기 마감이 매우 고급스럽고 앱 연결도 부드럽게 잘 됩니다. 배송이 하루 지연되었지만 제품 만족도가 높아서 만족합니다.' }
+      { id: 'tictoc_l***', date: '2026.06.15', option: 'Chalk White', rating: '★★★★★', text: '인테리어 효과가 정말 최고입니다. 화이트 배경의 방에 두니 갤러리 느낌이 물씬 나네요. 세로 나열된 상세 설명 이미지를 보고 반해서 샀는데 실물이 훨씬 예쁩니다.' },
+      { id: 'object_***', date: '2026.06.02', option: 'Stone Gray', rating: '★★★★★', text: '스톤 그레이 마감이 아주 독특하고 묵직한 조형미가 느껴집니다. 화분이나 도자기 옆에 두면 예술적 감성이 배가됩니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '어두운 방 안에서도 수분 센서 작동이 유효한가요?', author: 'light_***', date: '2026.06.16', answer: '안녕하세요, 고객님! Siseon의 수분 센서 및 내부 측정 모듈은 조도와 무관하게 토양 내 수분을 직접 감지하므로 정상 작동합니다. 다만, 식물의 광합성을 위해 간접 채광이 드는 곳에 배치를 추천드립니다.' },
-      { status: '답변완료', title: '다견 가정인데 반려동물이 물어도 안전한가요?', author: 'doggy_***', date: '2026.06.08', answer: '안녕하세요! 본 기기의 외장 쉘은 100% 생분해성 무독성 친환경 PLA 소재로 사출되어, 반려동물이 접촉하거나 입에 대더라도 무해하도록 설계되었습니다.' }
+      { status: '답변완료', title: '제품 표면 오염 시 물세척이 가능한가요?', author: 'clean_***', date: '2026.06.14', answer: '안녕하세요, 고객님! TICTOC Object는 친환경 세라믹 코팅 마감이 되어 있어 가벼운 물티슈나 흐르는 물에 헹구어 관리하실 수 있습니다. 거친 솔 사용은 삼가 주시기 바랍니다.' }
     ]
   },
-  gyeol: {
-    id: 'gyeol',
-    name: 'Gyeol (결) — 물결 무늬 도자기 초음파 가습기',
-    engName: 'Ceramic Wave Ultrasonic Humidifier',
-    brand: 'Studio Hyeong',
+  tictoc02: {
+    id: 'tictoc02',
+    name: 'TICTOC Object 02 — 미니멀 코스탈 드립 트레이',
+    engName: 'TICTOC Coastal Drip Tray',
+    brand: 'TICTOC',
     price: 145000,
     originalPrice: 161000,
     discount: '10%',
     rating: 4.8,
-    reviewsCount: 32,
-    description: '물결 모양의 도자기 하우징과 은은한 미세 분무가 만드는 침실 안의 고요한 오브제 가습기입니다.',
+    reviewsCount: 35,
+    description: '자연스러운 해안선의 실루엣을 모티브로 빚어낸 프리미엄 테이블 탑 트레이 스탠드입니다.',
     options: [
-      { name: 'Pure Clay (백자 백색 무광 마감)', val: 'Pure Clay' },
-      { name: 'Dark Ash (옹기 흑색 반무광 마감)', val: 'Dark Ash' }
+      { name: 'Sand Beige (모래 사장 베이지)', val: 'Sand Beige' },
+      { name: 'Coral Pink (산호 적색)', val: 'Coral Pink' }
     ],
-    thumbnails: ['use/111.png', 'use/222.png', 'use/333.png', 'baisic/3.png', 'color/11.png'],
+    thumbnails: [
+      '제품대표이미지/2.png',
+      '상세페이지/5.png',
+      '상세페이지/6.png',
+      '상세페이지/7.png',
+      '상세페이지/8.png'
+    ],
     detailImages: [
-      'use/111.png',
-      'use/222.png',
-      'use/333.png',
-      'color/11.png',
-      '연출/1111.png'
+      '상세페이지/3.png',
+      '상세페이지/4.png',
+      '상세페이지/5.png',
+      '상세페이지/6.png',
+      '상세페이지/7.png',
+      '상세페이지/8.png'
     ],
     reviews: [
-      { id: 'water_***', date: '2026.06.14', option: 'Pure Clay', rating: '★★★★★', text: '도자기로 구워진 외관이라 물이 닿았을 때 나는 은은한 흙내음과 물결 형태의 그림자가 방 안 분위기를 정말 편안하게 만들어 줍니다. 세척이 너무 간편해서 더 마음에 듭니다.' },
-      { id: 'room_de***', date: '2026.06.02', option: 'Dark Ash', rating: '★★★★★', text: '가습기라기보다 하나의 멋진 조형 미술품을 둔 것 같습니다. 분무량도 침실에서 쓰기에 매우 적당하고 고요합니다.' }
+      { id: 'water_***', date: '2026.06.11', option: 'Sand Beige', rating: '★★★★★', text: '테이블 위의 소품들을 정돈하기 위해 샀는데 수분 흡수도 잘 되고 질감도 따뜻하여 매우 만족하며 사용하고 있습니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '도자기 하우징만 별도로 구매하여 세척/교체가 가능한가요?', author: 'clay_***', date: '2026.06.11', answer: '안녕하세요, 고객님! 네, 도자기 상단 쉘은 내부 플라스틱 물탱크와 쉽게 분리되며, 하우징 단품도 교체용 부품 탭에서 추가로 선택 구매하실 수 있습니다.' }
+      { status: '답변완료', title: '배송 시 파손 우려는 없나요?', author: 'safety_***', date: '2026.06.05', answer: '안녕하세요! TICTOC의 모든 조형 세라믹 제품은 파손 방지를 위해 특수 커스텀 패키징 및 삼중 완충재 포장으로 전 배송 구역 안전 배송을 보장하고 있습니다.' }
     ]
   },
-  moong: {
-    id: 'moong',
-    name: 'Moong (뭉) — 구름 형상 스마트 무드 조명',
-    engName: 'Cloud-Shaped Smart Mood Light',
-    brand: 'Studio Hyeong',
+  tictoc03: {
+    id: 'tictoc03',
+    name: 'TICTOC Object 03 — 오로라 스마트 무드 오브제',
+    engName: 'TICTOC Aurora Mood Object',
+    brand: 'TICTOC',
     price: 168000,
     originalPrice: 191000,
     discount: '12%',
     rating: 5.0,
-    reviewsCount: 28,
-    description: '스마트 IoT 제어를 통해 실시간 날씨 및 기분 상태를 은은한 오로라 스펙트럼 색상으로 시각화하는 구름 조명입니다.',
+    reviewsCount: 29,
+    description: '구름과 안개의 유기적 흐름을 빛의 스펙트럼으로 투사하는 스마트 라이팅 디바이스입니다.',
     options: [
-      { name: 'Cirrus (새털구름 화이트 소프트 마감)', val: 'Cirrus' },
-      { name: 'Nimbus (먹구름 딥 그레이 마감)', val: 'Nimbus' }
+      { name: 'Pure Cirrus (화이트 실크 마감)', val: 'Pure Cirrus' },
+      { name: 'Deep Nimbus (블랙 스모크 마감)', val: 'Deep Nimbus' }
     ],
-    thumbnails: ['연출/1111.png', '연출/2222.png', 'baisic/2.png', 'use/222.png', 'use/333.png'],
+    thumbnails: [
+      '제품대표이미지/3.png',
+      '상세페이지/1.png',
+      '상세페이지/3.png',
+      '상세페이지/5.png',
+      '상세페이지/7.png'
+    ],
     detailImages: [
-      '연출/1111.png',
-      '연출/2222.png',
-      'color/22.png',
-      'baisic/2.png'
+      '상세페이지/1.png',
+      '상세페이지/2.png',
+      '상세페이지/5.png',
+      '상세페이지/6.png',
+      '상세페이지/7.png',
+      '상세페이지/8.png'
     ],
     reviews: [
-      { id: 'cloud_***', date: '2026.06.15', option: 'Cirrus', rating: '★★★★★', text: '별 다섯 개가 모자랄 정도로 최고로 이쁩니다. 스마트폰 날씨 위젯과 연동해 두면 밖의 기온에 맞춰 색이 스스로 변하는 게 정말 신기하고 위트가 가득합니다.' },
-      { id: 'night_l***', date: '2026.06.09', option: 'Nimbus', rating: '★★★★★', text: '어두운 방 안을 포근하게 비춰 줍니다. 솜사탕처럼 폭신해 보이지만 단단한 무독성 실리콘 재질이라 만질 때 촉감도 참 좋습니다.' }
+      { id: 'aurora***', date: '2026.06.16', option: 'Pure Cirrus', rating: '★★★★★', text: '밤마다 방 안에 오로라가 치는 느낌이라 눈이 즐겁고 힐링이 됩니다. 웰빙 무드 라이트용으로 최고네요.' }
     ],
     qna: [
-      { status: '답변완료', title: '구글 홈이나 애플 홈킷 등 홈 IoT 생태계 연동이 되나요?', author: 'iot_ma***', date: '2026.06.12', answer: '안녕하세요, 고객님! 본 제품은 Matter 표준 프로토콜을 탑재하여 Google Home, Apple HomeKit 및 SmartThings와 전면 호환 및 실시간 연동을 지원합니다.' }
+      { status: '답변완료', title: '스마트폰 전용 어플 연동 방식인가요?', author: 'app_m***', date: '2026.06.10', answer: '안녕하세요, 고객님! 본 조명 오브제는 전용 TICTOC 스마트 가이드 앱(iOS 및 Android 지원)을 다운받아 간편하게 블루투스/Wi-Fi로 멀티 페어링 제어가 가능합니다.' }
     ]
   },
-  sum: {
-    id: 'sum',
-    name: 'Sum (섬) — 아일랜드 세라믹 화분 드립 트레이',
-    engName: 'Ceramic Island Plant Drip Tray',
-    brand: 'Studio Hyeong',
-    price: 89000,
-    originalPrice: 94000,
-    discount: '5%',
-    rating: 4.7,
-    reviewsCount: 19,
-    description: '넘친 물이 하나의 조그만 섬 호수를 형성하는 조형미 넘치는 친환경 세라믹 물받이 스탠드 트레이입니다.',
-    options: [
-      { name: 'Sand Beige (모래 사장 베이지 마감)', val: 'Sand Beige' },
-      { name: 'Coral Pink (산호 적색 마감)', val: 'Coral Pink' }
-    ],
-    thumbnails: ['color/22.png', 'color/11.png', 'use/333.png', 'baisic/4.png', '연출/1111.png'],
-    detailImages: [
-      'color/22.png',
-      'color/11.png',
-      'baisic/4.png',
-      '연출/2222.png'
-    ],
-    reviews: [
-      { id: 'island_***', date: '2026.06.10', option: 'Sand Beige', rating: '★★★★★', text: '기존의 플라스틱 물받이는 인테리어를 해쳐서 고민이었는데, 이 제품은 화분 밑에 두기만 해도 하나의 작은 섬 풍경을 완성해 주어 볼 때마다 행복합니다. 물이 잘 스며들고 금방 마릅니다.' }
-    ],
-    qna: [
-      { status: '답변완료', title: '물때가 잘 끼거나 곰팡이가 피진 않나요?', author: 'clean_***', date: '2026.06.04', answer: '안녕하세요, 고객님! Sum 트레이는 표면에 다공성 천연 항균 규조 성분이 특수 코팅되어 있어, 물을 빠르게 흡수한 후 자연 건조시키며 물때 및 곰팡이 번식을 원천 차단해 줍니다. 2~3주에 한 번 흐르는 물에 가볍게 헹궈만 주시면 됩니다.' }
-    ]
-  },
-  orae: {
-    id: 'orae',
-    name: 'Orae (오래) — 모래시계 스마트 친환경 타이머',
-    engName: 'Hourglass Smart Eco Timer',
-    brand: 'Studio Hyeong',
-    price: 112000,
-    originalPrice: 140000,
-    discount: '20%',
+  tictoc04: {
+    id: 'tictoc04',
+    name: 'TICTOC Object 04 — 사운드스케이프 스마트 스피커',
+    engName: 'TICTOC Soundscape Smart Speaker',
+    brand: 'TICTOC',
+    price: 219000,
+    originalPrice: 250000,
+    discount: '12%',
     rating: 4.8,
-    reviewsCount: 25,
-    description: '디바이스를 뒤집으면 자동으로 아날로그 감성의 시간 측정을 시작하며, 종이 잉크(E-Ink) 화면으로 탄소 배출량을 절감하는 저전력 타이머입니다.',
+    reviewsCount: 31,
+    description: '도자 울림통 설계를 통해 입체적인 자연 음향과 백색소음을 방 안 전체에 확산시키는 감성 스피커입니다.',
     options: [
-      { name: 'Matte White (매트 화이트 마감)', val: 'Matte White' },
-      { name: 'Charcoal Black (차콜 블랙 마감)', val: 'Charcoal Black' }
+      { name: 'Clay White (백자 화이트 마감)', val: 'Clay White' },
+      { name: 'Volcanic Ash (화산재 매트 블랙)', val: 'Volcanic Ash' }
     ],
-    thumbnails: ['baisic/4.png', 'baisic/3.png', 'use/222.png', 'color/11.png', '연출/2222.png'],
+    thumbnails: [
+      '제품대표이미지/4.png',
+      '상세페이지/2.png',
+      '상세페이지/4.png',
+      '상세페이지/6.png',
+      '상세페이지/8.png'
+    ],
     detailImages: [
-      'baisic/4.png',
-      'baisic/3.png',
-      'use/222.png',
-      'color/11.png',
-      '연출/1111.png'
+      '상세페이지/2.png',
+      '상세페이지/4.png',
+      '상세페이지/6.png',
+      '상세페이지/8.png'
     ],
     reviews: [
-      { id: 'timer_***', date: '2026.06.13', option: 'Charcoal Black', rating: '★★★★★', text: '뽀모도로 공부법 하려고 샀는데, 획기적이고 뒤집을 때 촉감이 중독적이라 공부 집중도가 훨씬 올라갔습니다. E-Ink 화면이라 눈도 전혀 피로하지 않고 배터리도 한 번 충전하면 3달 이상 갑니다.' }
+      { id: 'speaker***', date: '2026.06.14', option: 'Clay White', rating: '★★★★★', text: '소리가 도자기 통 안에서 한 번 울려 퍼져서 그런지 중저음 소리가 엄청 부드럽고 편안하게 들립니다. 디자인도 너무 튀지 않고 은은해서 공간과 잘 융합됩니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '알람 음량을 조절하거나 무음 모드(진동/LED 전용) 지원이 되나요?', author: 'focus_***', date: '2026.06.07', answer: '안녕하세요! 네, Orae 디바이스는 후면 다이얼을 통해 무음(LED 반짝임 알림), 진동, 3단계 음량 조절 모드로 전환하여 조용한 독서실 등에서도 자유롭게 쓰실 수 있습니다.' }
+      { status: '답변완료', title: '무선 블루투스 연결 규격이 어떻게 되나요?', author: 'blue_***', date: '2026.06.03', answer: '안녕하세요! 본 오디오 디바이스는 최신 Bluetooth 5.3 버전을 탑재하여 혼선이나 끊김 없이 고음질 음원을 안정적으로 무선 재생하실 수 있습니다.' }
     ]
   }
 };
 
 // 현재 상세페이지에 로드된 상품 ID 및 정보
-let currentProductId = 'siseon';
+let currentProductId = 'tictoc01';
 let selectedOptionsList = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -175,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initStudioCarousel();
   initDeviceSimulator();
-  renderProductGrid(); // 메인 홈 상품 5종 리스트 렌더링
+  renderProductGrid(); // 메인 홈 상품 4종 리스트 렌더링
   
   // URL 해시 기반 SPA 라우팅 지원
   window.addEventListener('hashchange', handleRouting);
@@ -334,7 +324,7 @@ function initStudioCarousel() {
 }
 
 /**
- * 4. 가상 디바이스 시뮬레이터 동작 로직 (Siseon 전용)
+ * 4. 가상 디바이스 시뮬레이터 동작 로직 (Siseon 전용이나 TICTOC에서는 비활성화 유지)
  */
 function initDeviceSimulator() {
   const shutterBtn = document.getElementById('simShutterBtn');
@@ -577,21 +567,17 @@ function renderProductDetail(productId) {
     detailImgContainer.appendChild(imgTag);
   });
 
+  // TICTOC 4종 신규 브랜드에는 시뮬레이터 및 캐러셀 스킵 (hidden 유지)
   const simWrapper = document.getElementById('simulatorWrapper');
   const carouselWrapper = document.getElementById('carouselWrapper');
-  if (productId === 'siseon') {
-    simWrapper.classList.remove('hidden');
-    carouselWrapper.classList.remove('hidden');
-  } else {
-    simWrapper.classList.add('hidden');
-    carouselWrapper.classList.add('hidden');
-  }
+  simWrapper.classList.add('hidden');
+  carouselWrapper.classList.add('hidden');
 
   document.getElementById('detailRatingScore').textContent = prod.rating;
   const reviewScoreBars = document.getElementById('reviewScoreBars');
-  const fiveStarsPercent = productId === 'moong' ? '100%' : (productId === 'siseon' ? '92%' : '88%');
-  const fourStarsPercent = productId === 'moong' ? '0%' : (productId === 'siseon' ? '6%' : '10%');
-  const threeStarsPercent = productId === 'moong' ? '0%' : (productId === 'siseon' ? '2%' : '2%');
+  const fiveStarsPercent = productId === 'tictoc03' ? '100%' : '88%';
+  const fourStarsPercent = productId === 'tictoc03' ? '0%' : '10%';
+  const threeStarsPercent = productId === 'tictoc03' ? '0%' : '2%';
   
   reviewScoreBars.innerHTML = `
     <div class="score-bar-row">
