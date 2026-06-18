@@ -3,19 +3,19 @@
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
-// TICTOC 브랜드 신규 4종 상품 마스터 데이터셋 (상단 갤러리 영역에 상세페이지 이미지 혼합 없이 오직 제품대표이미지만 4개 활용)
+// TIKTOK 브랜드 신규 4종 상품 마스터 데이터셋 (상단 갤러리 영역에 상세페이지 이미지 혼합 없이 오직 제품대표이미지만 4개 활용)
 const productsData = {
-  tictoc01: {
-    id: 'tictoc01',
-    name: 'TICTOC Object 01 — 감성 아날로그 테이블 락',
-    engName: 'TICTOC Analog Table Rock',
-    brand: 'TICTOC',
+  tiktok01: {
+    id: 'tiktok01',
+    name: 'TIKTOK Object 01 — 감성 아날로그 테이블 락',
+    engName: 'TIKTOK Analog Table Rock',
+    brand: 'TIKTOK',
     price: 189000,
     originalPrice: 220000,
     discount: '15%',
     rating: 4.9,
     reviewsCount: 42,
-    description: '공간의 흐름을 부드럽게 가다듬는 TICTOC의 첫 번째 시그니처 세라믹 디자인 오브제입니다.',
+    description: '공간의 흐름을 부드럽게 가다듬는 TIKTOK의 첫 번째 시그니처 세라믹 디자인 오브제입니다.',
     options: [
       { name: 'Chalk White (매트 화이트 마감)', val: 'Chalk White' },
       { name: 'Stone Gray (거친 돌 텍스처 마감)', val: 'Stone Gray' }
@@ -37,18 +37,18 @@ const productsData = {
       '상세페이지/8.png'
     ],
     reviews: [
-      { id: 'tictoc_l***', date: '2026.06.15', option: 'Chalk White', rating: '★★★★★', text: '인테리어 효과가 정말 최고입니다. 화이트 배경의 방에 두니 갤러리 느낌이 물씬 나네요. 세로 나열된 상세 설명 이미지를 보고 반해서 샀는데 실물이 훨씬 예쁩니다.' },
+      { id: 'tiktok_l***', date: '2026.06.15', option: 'Chalk White', rating: '★★★★★', text: '인테리어 효과가 정말 최고입니다. 화이트 배경의 방에 두니 갤러리 느낌이 물씬 나네요. 세로 나열된 상세 설명 이미지를 보고 반해서 샀는데 실물이 훨씬 예쁩니다.' },
       { id: 'object_***', date: '2026.06.02', option: 'Stone Gray', rating: '★★★★★', text: '스톤 그레이 마감이 아주 독특하고 묵직한 조형미가 느껴집니다. 화분이나 도자기 옆에 두면 예술적 감성이 배가됩니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '제품 표면 오염 시 물세척이 가능한가요?', author: 'clean_***', date: '2026.06.14', answer: '안녕하세요, 고객님! TICTOC Object는 친환경 세라믹 코팅 마감이 되어 있어 가벼운 물티슈나 흐르는 물에 헹구어 관리하실 수 있습니다. 거친 솔 사용은 삼가 주시기 바랍니다.' }
+      { status: '답변완료', title: '제품 표면 오염 시 물세척이 가능한가요?', author: 'clean_***', date: '2026.06.14', answer: '안녕하세요, 고객님! TIKTOK Object는 친환경 세라믹 코팅 마감이 되어 있어 가벼운 물티슈나 흐르는 물에 헹구어 관리하실 수 있습니다. 거친 솔 사용은 삼가 주시기 바랍니다.' }
     ]
   },
-  tictoc02: {
-    id: 'tictoc02',
-    name: 'TICTOC Object 02 — 미니멀 코스탈 드립 트레이',
-    engName: 'TICTOC Coastal Drip Tray',
-    brand: 'TICTOC',
+  tiktok02: {
+    id: 'tiktok02',
+    name: 'TIKTOK Object 02 — 미니멀 코스탈 드립 트레이',
+    engName: 'TIKTOK Coastal Drip Tray',
+    brand: 'TIKTOK',
     price: 145000,
     originalPrice: 161000,
     discount: '10%',
@@ -77,14 +77,14 @@ const productsData = {
       { id: 'water_***', date: '2026.06.11', option: 'Sand Beige', rating: '★★★★★', text: '테이블 위의 소품들을 정돈하기 위해 샀는데 수분 흡수도 잘 되고 질감도 따뜻하여 매우 만족하며 사용하고 있습니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '배송 시 파손 우려는 없나요?', author: 'safety_***', date: '2026.06.05', answer: '안녕하세요! TICTOC의 모든 조형 세라믹 제품은 파손 방지를 위해 특수 커스텀 패키징 및 삼중 완충재 포장으로 전 배송 구역 안전 배송을 보장하고 있습니다.' }
+      { status: '답변완료', title: '배송 시 파손 우려는 없나요?', author: 'safety_***', date: '2026.06.05', answer: '안녕하세요! TIKTOK의 모든 조형 세라믹 제품은 파손 방지를 위해 특수 커스텀 패키징 및 삼중 완충재 포장으로 전 배송 구역 안전 배송을 보장하고 있습니다.' }
     ]
   },
-  tictoc03: {
-    id: 'tictoc03',
-    name: 'TICTOC Object 03 — 오로라 스마트 무드 오브제',
-    engName: 'TICTOC Aurora Mood Object',
-    brand: 'TICTOC',
+  tiktok03: {
+    id: 'tiktok03',
+    name: 'TIKTOK Object 03 — 오로라 스마트 무드 오브제',
+    engName: 'TIKTOK Aurora Mood Object',
+    brand: 'TIKTOK',
     price: 168000,
     originalPrice: 191000,
     discount: '12%',
@@ -113,14 +113,14 @@ const productsData = {
       { id: 'aurora***', date: '2026.06.16', option: 'Pure Cirrus', rating: '★★★★★', text: '밤마다 방 안에 오로라가 치는 느낌이라 눈이 즐겁고 힐링이 됩니다. 웰빙 무드 라이트용으로 최고네요.' }
     ],
     qna: [
-      { status: '답변완료', title: '스마트폰 전용 어플 연동 방식인가요?', author: 'app_m***', date: '2026.06.10', answer: '안녕하세요, 고객님! 본 조명 오브제는 전용 TICTOC 스마트 가이드 앱(iOS 및 Android 지원)을 다운받아 간편하게 블루투스/Wi-Fi로 멀티 페어링 제어가 가능합니다.' }
+      { status: '답변완료', title: '스마트폰 전용 어플 연동 방식인가요?', author: 'app_m***', date: '2026.06.10', answer: '안녕하세요, 고객님! 본 조명 오브제는 전용 TIKTOK 스마트 가이드 앱(iOS 및 Android 지원)을 다운받아 간편하게 블루투스/Wi-Fi로 멀티 페어링 제어가 가능합니다.' }
     ]
   },
-  tictoc04: {
-    id: 'tictoc04',
-    name: 'TICTOC Object 04 — 사운드스케이프 스마트 스피커',
-    engName: 'TICTOC Soundscape Smart Speaker',
-    brand: 'TICTOC',
+  tiktok04: {
+    id: 'tiktok04',
+    name: 'TIKTOK Object 04 — 사운드스케이프 스마트 스피커',
+    engName: 'TIKTOK Soundscape Smart Speaker',
+    brand: 'TIKTOK',
     price: 219000,
     originalPrice: 250000,
     discount: '12%',
@@ -153,7 +153,7 @@ const productsData = {
 };
 
 // 현재 상세페이지에 로드된 상품 ID 및 정보
-let currentProductId = 'tictoc01';
+let currentProductId = 'tiktok01';
 let selectedOptionsList = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -320,7 +320,7 @@ function initStudioCarousel() {
 }
 
 /**
- * 4. 가상 디바이스 시뮬레이터 동작 로직 (TICTOC에서는 비활성화 유지)
+ * 4. 가상 디바이스 시뮬레이터 동작 로직 (TIKTOK에서는 비활성화 유지)
  */
 function initDeviceSimulator() {
   const shutterBtn = document.getElementById('simShutterBtn');
@@ -522,6 +522,7 @@ function renderProductDetail(productId) {
   document.getElementById('shopMainImg').src = prod.thumbnails[0];
   document.getElementById('detailBrand').textContent = prod.brand;
   document.getElementById('detailTitle').textContent = prod.name;
+  document.getElementById('detailDescription').textContent = prod.description;
   document.getElementById('detailRatingNum').textContent = prod.rating;
   document.getElementById('detailRatingCount').textContent = `(구매평 ${prod.reviewsCount})`;
   
@@ -570,9 +571,9 @@ function renderProductDetail(productId) {
 
   document.getElementById('detailRatingScore').textContent = prod.rating;
   const reviewScoreBars = document.getElementById('reviewScoreBars');
-  const fiveStarsPercent = productId === 'tictoc03' ? '100%' : '88%';
-  const fourStarsPercent = productId === 'tictoc03' ? '0%' : '10%';
-  const threeStarsPercent = productId === 'tictoc03' ? '0%' : '2%';
+  const fiveStarsPercent = productId === 'tiktok03' ? '100%' : '88%';
+  const fourStarsPercent = productId === 'tiktok03' ? '0%' : '10%';
+  const threeStarsPercent = productId === 'tiktok03' ? '0%' : '2%';
   
   reviewScoreBars.innerHTML = `
     <div class="score-bar-row">

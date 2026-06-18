@@ -1,5 +1,5 @@
 /*
- * TICTOC 쇼핑몰 아기자기한 파스텔 CSS 스타일시트 (style.css)
+ * TIKTOK 쇼핑몰 아기자기한 파스텔 CSS 스타일시트 (style.css)
  * 모든 주석과 설명은 한글로 작성되었습니다.
  */
 
@@ -248,9 +248,9 @@ nav.scrolled {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: var(--bg-secondary);
-  border-radius: var(--border-radius-md);
+  background: #ffffff; /* 사진 배경 흰색 설정 */
   border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
 }
 
 .img-block img {
@@ -320,6 +320,31 @@ nav.scrolled {
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  background: #ffffff; /* 사진 배경 흰색 설정 */
+}
+
+/* 메인 홈에서는 오직 썸네일만 노출 */
+.product-grid .product-card {
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.product-grid .product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border: none;
+  box-shadow: none;
+}
+
+.product-grid .prod-info-box {
+  display: none; /* 텍스트 및 상세정보 비노출 */
+}
+
+.product-grid .prod-img-box {
+  margin-bottom: 0;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-premium);
 }
 
 .product-card:hover {
@@ -502,6 +527,7 @@ nav.scrolled {
   cursor: pointer;
   transition: var(--transition-fast);
   opacity: 0.65;
+  background: #ffffff; /* 썸네일 배경 흰색 설정 */
 }
 
 .thumb-item img {
@@ -618,6 +644,19 @@ nav.scrolled {
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 25px;
   margin-bottom: 25px;
+}
+
+/* 상품 설명 스타일 */
+.shop-description-box {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+#detailDescription {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
 }
 
 .meta-row {
@@ -929,11 +968,16 @@ nav.scrolled {
 }
 
 .tab-content {
-  display: none;
+  display: block; /* 모든 탭 콘텐츠를 항상 표시 */
+  margin-bottom: 80px; /* 섹션 간격 */
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 60px;
 }
 
-.tab-content.active {
-  display: block;
+.tab-content:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .tab-section-header {
