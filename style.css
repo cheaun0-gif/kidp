@@ -7,63 +7,61 @@
 
 /* ══ 디자인 시스템 토큰 (CSS 변수) ══ */
 :root {
-  /* 아기자기한 라운드 폰트 */
-  --font-eng: 'Quicksand', -apple-system, sans-serif;
+  /* 세련된 고딕 계열 및 Outfit 영문 폰트 */
+  --font-eng: 'Outfit', -apple-system, sans-serif;
   --font-kor: 'Noto Sans KR', sans-serif;
   
-  --transition-smooth: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 살짝 바운스되는 느낌 */
-  --transition-fast: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.15s ease-in-out;
   
-  /* 조약돌처럼 둥글둥글한 모서리 */
-  --border-radius-lg: 36px;
-  --border-radius-md: 24px;
-  --border-radius-sm: 14px;
+  /* 정돈되고 세련된 모서리 반경 */
+  --border-radius-lg: 8px;
+  --border-radius-md: 6px;
+  --border-radius-sm: 4px;
 }
 
-/* 파스텔 라이트 모드 (화이트 배경 메인) */
+/* 파스텔 라이트 모드 (네이버 스마트스토어 느낌의 화이트 테마) */
 [data-theme="light"] {
-  --bg-primary: hsl(40, 50%, 98%); /* 따뜻한 크림빛 화이트 */
-  --bg-secondary: hsl(40, 40%, 94%); /* 연한 바닐라 크림 */
-  --bg-card: rgba(255, 255, 255, 0.92); /* 뽀얀 우유빛 글래스 카드 */
-  --text-primary: hsl(220, 25%, 15%); /* 부드러운 딥 차콜 */
-  --text-secondary: hsl(220, 15%, 35%);
-  --text-muted: hsl(220, 10%, 55%);
-  --border-color: rgba(220, 200, 180, 0.35); /* 따뜻하고 연한 베이지 선 */
-  --border-glow: rgba(255, 255, 255, 0.5);
+  --bg-primary: #ffffff; /* 흰색 배경 */
+  --bg-secondary: #f8f9fa; /* 밝은 회색 */
+  --bg-card: #ffffff; /* 흰색 배경 */
+  --text-primary: #222222; /* 짙은 검은색 */
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --border-color: #ececec; /* 얇은 연회색 선 */
+  --border-glow: rgba(0, 0, 0, 0.01);
   
-  /* 귀엽고 러블리한 파스텔 코랄 핑크 */
-  --accent: hsl(350, 85%, 68%);
-  --accent-rgb: 242, 108, 128;
-  --accent-glow: rgba(242, 108, 128, 0.15);
+  /* 네이버 그린 컬러 */
+  --accent: #03c75a;
+  --accent-rgb: 3, 199, 90;
+  --accent-glow: rgba(3, 199, 90, 0.08);
   
-  /* 푹신푹신한 구름 섀도우 */
-  --shadow-premium: 0 20px 40px -10px rgba(180, 160, 140, 0.15);
-  --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 100%);
-  --nav-bg: rgba(255, 252, 245, 0.88);
-  --price-color: hsl(350, 80%, 58%);
+  /* 세련된 미니멀 그림자 */
+  --shadow-premium: 0 2px 12px rgba(0, 0, 0, 0.04);
+  --glass-reflection: none;
+  --nav-bg: rgba(255, 255, 255, 0.96);
+  --price-color: #222222;
 }
 
-/* 파스텔 다크 모드 */
+/* 파스텔 다크 모드 (세련된 다크 테마) */
 [data-theme="dark"] {
-  --bg-primary: hsl(220, 24%, 12%); /* 아늑한 네이비 블랙 */
-  --bg-secondary: hsl(220, 20%, 16%);
-  --bg-card: rgba(30, 36, 48, 0.8); /* 부드러운 딥 블루 카드 */
-  --text-primary: hsl(220, 20%, 90%);
-  --text-secondary: hsl(220, 12%, 75%);
-  --text-muted: hsl(220, 10%, 55%);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(255, 255, 255, 0.02);
+  --bg-primary: #121212;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --border-color: #2c2c2c;
+  --border-glow: rgba(255, 255, 255, 0.01);
   
-  /* 귀엽고 통통 튀는 파스텔 피치 오렌지 */
-  --accent: hsl(24, 90%, 65%);
-  --accent-rgb: 250, 145, 95;
-  --accent-glow: rgba(250, 145, 95, 0.22);
+  --accent: #03c75a;
+  --accent-rgb: 3, 199, 90;
+  --accent-glow: rgba(3, 199, 90, 0.15);
   
-  /* 푹신푹신한 그림자 */
-  --shadow-premium: 0 25px 50px -15px rgba(0, 0, 0, 0.5);
-  --glass-reflection: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
-  --nav-bg: rgba(22, 27, 36, 0.88);
-  --price-color: hsl(24, 90%, 65%);
+  --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --glass-reflection: none;
+  --nav-bg: rgba(18, 18, 18, 0.96);
+  --price-color: #f3f4f6;
 }
 
 /* 기본 세팅 */
@@ -106,22 +104,14 @@ body {
 /* ══ 조약돌 글래스모피즘 패널 ══ */
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 2px solid var(--border-color); /* 테두리를 조금 더 굵고 동글게 */
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-premium);
   position: relative;
   z-index: 1;
 }
 
 .glass-panel::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: inherit;
-  background: var(--glass-reflection);
-  pointer-events: none;
-  z-index: -1;
+  display: none;
 }
 
 /* ══ 헤딩 타이포그래피 ══ */
@@ -139,16 +129,14 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 60px;
+  padding: 16px 60px;
   background: var(--nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   transition: var(--transition-smooth), border-color 0.4s;
 }
 
 nav.scrolled {
-  padding: 15px 60px;
+  padding: 12px 60px;
 }
 
 .nav-logo {
@@ -165,7 +153,7 @@ nav.scrolled {
 }
 
 .nav-logo::before {
-  content: '⏰'; /* 아기자기한 이모티콘 로고 데코 */
+  content: '🛍️';
   font-size: 18px;
 }
 
@@ -249,7 +237,7 @@ nav.scrolled {
   overflow: hidden;
   position: relative;
   background: #ffffff; /* 사진 배경 흰색 설정 */
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
 }
 
@@ -323,18 +311,21 @@ nav.scrolled {
   background: #ffffff; /* 사진 배경 흰색 설정 */
 }
 
-/* 메인 홈에서는 오직 썸네일만 노출 */
+/* 메인 홈에서는 오직 썸네일만 노출 (스마트스토어 느낌의 얇은 테두리 사각형 격자) */
 .product-grid .product-card {
   padding: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-premium);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .product-grid .product-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border: none;
-  box-shadow: none;
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .product-grid .prod-info-box {
@@ -343,8 +334,9 @@ nav.scrolled {
 
 .product-grid .prod-img-box {
   margin-bottom: 0;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-premium);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .product-card:hover {
@@ -522,7 +514,7 @@ nav.scrolled {
 .thumb-item {
   aspect-ratio: 1.1;
   border-radius: var(--border-radius-md);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -847,26 +839,25 @@ nav.scrolled {
   color: #fff;
   border: none;
   padding: 16px;
-  border-radius: 50px; /* 완전히 둥근 조약돌 */
+  border-radius: var(--border-radius-sm);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition-smooth);
-  box-shadow: 0 8px 20px var(--accent-glow);
+  box-shadow: none;
 }
 
 .btn-buy:hover {
-  transform: translateY(-3px) scale(1.02);
   filter: brightness(1.05);
-  box-shadow: 0 12px 24px var(--accent-glow);
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .btn-cart {
-  background: var(--bg-secondary);
+  background: #ffffff;
   color: var(--text-primary);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   padding: 16px;
-  border-radius: 50px;
+  border-radius: var(--border-radius-sm);
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -874,14 +865,14 @@ nav.scrolled {
 }
 
 .btn-cart:hover {
-  background: var(--border-color);
-  transform: translateY(-2px);
+  background: var(--bg-secondary);
+  border-color: #bbb;
 }
 
 .btn-wish {
-  background: var(--bg-secondary);
-  border: 2px solid var(--border-color);
-  border-radius: 50%; /* 완전 원형 */
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -891,14 +882,13 @@ nav.scrolled {
 }
 
 .btn-wish:hover {
-  transform: scale(1.1);
+  background: var(--bg-secondary);
 }
 
 .btn-wish.active {
-  color: #f26c80;
-  border-color: rgba(242, 108, 128, 0.4);
-  background: rgba(242, 108, 128, 0.15);
-  transform: scale(1.15) rotate(15deg);
+  color: #f43142;
+  border-color: #f43142;
+  background: rgba(244, 49, 66, 0.05);
 }
 
 /* ══════════════════════════════
@@ -970,7 +960,7 @@ nav.scrolled {
 .tab-content {
   display: block; /* 모든 탭 콘텐츠를 항상 표시 */
   margin-bottom: 80px; /* 섹션 간격 */
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 60px;
 }
 
@@ -1034,32 +1024,11 @@ nav.scrolled {
 
 .vertical-detail-images img {
   width: 100%;
-  max-width: 1000px;
+  max-width: 860px; /* 상세 정보 최적의 넓이 */
   height: auto;
-  margin-bottom: 2px;
+  margin: 0 auto;
   display: block;
-  border-radius: 0;
   border: none;
-}
-
-.vertical-detail-images img:first-child {
-  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-  border-top: 2px solid var(--border-color);
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
-}
-
-.vertical-detail-images img:not(:first-child):not(:last-child) {
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
-}
-
-.vertical-detail-images img:last-child {
-  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
-  border-bottom: 2px solid var(--border-color);
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
-  margin-bottom: 0;
 }
 
 /* ══════════════════════════════
