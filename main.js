@@ -249,11 +249,17 @@ function renderProductGrid() {
         <div class="prod-price-row">
           <span class="discount">${prod.discount}</span>
           <span class="price">${prod.price.toLocaleString()}원</span>
+          <span class="original-price">${prod.originalPrice.toLocaleString()}원</span>
         </div>
         <div class="prod-meta">
           <span class="stars">★★★★★</span>
           <span class="rating">${prod.rating}</span>
           <span class="reviews">(${prod.reviewsCount})</span>
+        </div>
+        <div class="prod-badges">
+          <span class="badge badge-free">무료배송</span>
+          <span class="badge badge-today">오늘출발</span>
+          <span class="badge badge-npay">N페이 적립</span>
         </div>
       </div>
     `;
