@@ -39,11 +39,74 @@
     </div>
   </header>
 
+  <!-- CATEGORY SELECTOR (카테고리 선택 바) -->
+  <div class="store-categories">
+    <button class="category-btn active" onclick="alert('전체 상품을 보고 계십니다.')">전체상품</button>
+    <button class="category-btn" onclick="alert('가상스토어 데모입니다. 전체 상품만 노출됩니다.')">인기오브제</button>
+    <button class="category-btn" onclick="alert('가상스토어 데모입니다. 전체 상품만 노출됩니다.')">신상품</button>
+    <button class="category-btn" onclick="alert('가상스토어 데모입니다. 전체 상품만 노출됩니다.')">스마트가젯</button>
+  </div>
+
   <!-- ══════════ § SHOP HOME (메인 홈 화면: 썸네일 격자 상품 목록) ══════════ -->
   <section id="shop-home">
     <!-- 상품 그리드 리스트 (미리보기 썸네일 이미지 중심 격자) -->
     <div class="product-grid" id="productGridContainer">
       <!-- JS를 통해 상품 카드가 동적으로 주입됩니다. -->
+    </div>
+  </section>
+
+  <!-- PROMOTIONAL BANNERS (기획전 및 이벤트 배너) -->
+  <section class="store-promos max-width-container">
+    <div class="promo-card bg-soft-green">
+      <div class="promo-text">
+        <span class="promo-badge">CRAFT</span>
+        <h3>세라믹 핸드메이드 기획전</h3>
+        <p>자연의 거친 돌 질감과 백자의 매끄러움을 그대로 살린 흙의 온기.</p>
+      </div>
+      <div class="promo-icon">🏺</div>
+    </div>
+    <div class="promo-card bg-soft-blue">
+      <div class="promo-text">
+        <span class="promo-badge">EVENT</span>
+        <h3>리뷰 적립금 5,000원</h3>
+        <p>텍스트/사진 구매평을 남겨주시면 네이버 포인트를 드립니다.</p>
+      </div>
+      <div class="promo-icon">🎁</div>
+    </div>
+  </section>
+
+  <!-- BRAND PHILOSOPHY (브랜드 스토리) -->
+  <section class="brand-philosophy max-width-container reveal">
+    <div class="philosophy-content">
+      <h2>Crafted to Rhythm</h2>
+      <div class="philosophy-line"></div>
+      <p class="philosophy-text">
+        TIKTOK은 아날로그적 사물의 따뜻한 조형미와 바쁜 일상을 가다듬는 스마트 기술의 편안함을 조화롭게 융합한 세라믹 홈 오브제를 디자인합니다. 매일 머무는 집안 곳곳에 은은하고 위트 있는 리듬감을 불어넣어 줄 디자인 소품들을 소개합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- CUSTOMER SERVICE GUIDES (쇼핑 가이드 정보 그리드) -->
+  <section class="customer-guides max-width-container">
+    <div class="guide-item">
+      <div class="guide-icon">🚚</div>
+      <h4>무료 배송 서비스</h4>
+      <p>TIKTOK 전 상품 무료배송 및 안전 익일 배송 서비스를 제공합니다.</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">📦</div>
+      <h4>안심 도자기 패키징</h4>
+      <p>파손 방지를 위해 도자기 전용 친환경 특수 삼중 에어백 포장.</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">💬</div>
+      <h4>1:1 빠른 톡톡 문의</h4>
+      <p>네이버 톡톡 및 게시판을 통해 365일 실시간 상담이 가능합니다.</p>
+    </div>
+    <div class="guide-item">
+      <div class="guide-icon">💳</div>
+      <h4>N페이 5% 추가 적립</h4>
+      <p>네이버페이 충전 결제 및 스마트스토어 단골 등록 시 포인트 적립.</p>
     </div>
   </section>
 
