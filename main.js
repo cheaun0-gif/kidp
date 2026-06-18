@@ -21,10 +21,10 @@ const productsData = {
       { name: 'Stone Gray (거친 돌 텍스처 마감)', val: 'Stone Gray' }
     ],
     thumbnails: [
-      '제품대표이미지/1.png',
-      '제품대표이미지/2.png',
-      '제품대표이미지/3.png',
-      '제품대표이미지/4.png'
+      '제품3/1.png',
+      '제품3/2.png',
+      '제품3/3.png',
+      '제품3/4.png'
     ],
     detailImages: [
       '상세페이지/1.png',
@@ -62,10 +62,10 @@ const productsData = {
       { name: 'Coral Pink (산호 적색)', val: 'Coral Pink' }
     ],
     thumbnails: [
-      '제품대표이미지/2.png',
-      '제품대표이미지/1.png',
-      '제품대표이미지/3.png',
-      '제품대표이미지/4.png'
+      '제품3/2.png',
+      '제품3/1.png',
+      '제품3/3.png',
+      '제품3/4.png'
     ],
     detailImages: [
       '상세페이지/3.png',
@@ -98,10 +98,10 @@ const productsData = {
       { name: 'Deep Nimbus (블랙 스모크 마감)', val: 'Deep Nimbus' }
     ],
     thumbnails: [
-      '제품대표이미지/3.png',
-      '제품대표이미지/1.png',
-      '제품대표이미지/2.png',
-      '제품대표이미지/4.png'
+      '제품3/3.png',
+      '제품3/1.png',
+      '제품3/2.png',
+      '제품3/4.png'
     ],
     detailImages: [
       '상세페이지/1.png',
@@ -134,10 +134,10 @@ const productsData = {
       { name: 'Volcanic Ash (화산재 매트 블랙)', val: 'Volcanic Ash' }
     ],
     thumbnails: [
-      '제품대표이미지/4.png',
-      '제품대표이미지/1.png',
-      '제품대표이미지/2.png',
-      '제품대표이미지/3.png'
+      '제품3/4.png',
+      '제품3/1.png',
+      '제품3/2.png',
+      '제품3/3.png'
     ],
     detailImages: [
       '상세페이지/2.png',
@@ -161,13 +161,12 @@ let selectedOptionsList = [];
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initScrollEffects();
-  initStudioCarousel();
-  initDeviceSimulator();
-  renderProductGrid(); // 메인 홈 상품 4종 리스트 렌더링
   
-  // URL 해시 기반 SPA 라우팅 지원
-  window.addEventListener('hashchange', handleRouting);
-  handleRouting();
+  if (document.getElementById('product-detail-view')) {
+    renderProductDetail('tiktok01');
+  } else {
+    renderProductGrid();
+  }
 });
 
 /**
@@ -428,7 +427,12 @@ function renderProductGrid() {
   Object.values(productsData).forEach(prod => {
     const card = document.createElement('div');
     card.className = 'product-card glass-panel reveal';
-    card.setAttribute('onclick', `navigateToProduct('${prod.id}')`);
+    if (prod.id === 'tiktok01') {
+      card.setAttribute('onclick', `location.href='detail.html'`);
+    } else {
+      card.style.cursor = 'default';
+      card.setAttribute('onclick', `void(0)`);
+    }
     card.innerHTML = `
       <div class="prod-img-box img-block">
         <img src="${prod.thumbnails[0]}" alt="${prod.name}" />
@@ -481,57 +485,59 @@ function handleRouting() {
 }
 
 window.goHome = function() {
-  if (window.location.hash !== '') {
-    history.pushState('', document.title, window.location.pathname + window.location.search);
-  }
-
-  document.getElementById('shop-home').classList.remove('hidden');
-  document.getElementById('product-detail-view').classList.add('hidden');
-
-  document.getElementById('navDetailLink').classList.add('hidden');
-  document.getElementById('navReviewLink').classList.add('hidden');
-  document.getElementById('navQnaLink').classList.add('hidden');
-
-  document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-  document.querySelector('.nav-menu a[onclick*="goHome"]').classList.add('active');
-
-  selectedOptionsList = [];
-  const container = document.getElementById('selectedOptionsContainer');
-  if (container) container.innerHTML = '';
-  calculateTotalPrice();
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  location.href = 'index.html';
 };
 
 window.navigateToProduct = function(productId) {
-  window.location.hash = `#product/${productId}`;
+  if (productId === 'tiktok01') {
+    location.href = 'detail.html';
+  }
 };
 
 function renderProductDetail(productId) {
   currentProductId = productId;
   const prod = productsData[productId];
 
-  document.getElementById('shop-home').classList.add('hidden');
-  document.getElementById('product-detail-view').classList.remove('hidden');
-
-  document.getElementById('navDetailLink').classList.remove('hidden');
-  document.getElementById('navReviewLink').classList.remove('hidden');
-  document.getElementById('navQnaLink').classList.remove('hidden');
-
-  document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-  document.getElementById('navDetailLink').classList.add('active');
-
-  document.getElementById('shopMainImg').src = prod.thumbnails[0];
-  document.getElementById('detailBrand').textContent = prod.brand;
-  document.getElementById('detailTitle').textContent = prod.name;
-  document.getElementById('detailDescription').textContent = prod.description;
-  document.getElementById('detailRatingNum').textContent = prod.rating;
-  document.getElementById('detailRatingCount').textContent = `(구매평 ${prod.reviewsCount})`;
+  const shopHome = document.getElementById('shop-home');
+  if (shopHome) shopHome.classList.add('hidden');
   
-  document.getElementById('detailDiscount').textContent = prod.discount;
-  document.getElementById('detailOriginalPrice').textContent = `${prod.originalPrice.toLocaleString()}원`;
-  document.getElementById('detailPrice').textContent = prod.price.toLocaleString();
-  document.getElementById('detailBenefit').innerHTML = `네이버페이 포인트 최대 <strong>${Math.round(prod.price * 0.05).toLocaleString()}원</strong> 적립 (기본 적립 + 충전 결제 시)`;
+  const detailView = document.getElementById('product-detail-view');
+  if (detailView) detailView.classList.remove('hidden');
+
+  const navDetailLink = document.getElementById('navDetailLink');
+  if (navDetailLink) navDetailLink.classList.remove('hidden');
+  const navReviewLink = document.getElementById('navReviewLink');
+  if (navReviewLink) navReviewLink.classList.remove('hidden');
+  const navQnaLink = document.getElementById('navQnaLink');
+  if (navQnaLink) navQnaLink.classList.remove('hidden');
+
+  const navDetailA = document.querySelector('.nav-menu a');
+  if (navDetailA) {
+    document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+    if (navDetailLink) navDetailLink.classList.add('active');
+  }
+
+  const shopMainImg = document.getElementById('shopMainImg');
+  if (shopMainImg) shopMainImg.src = prod.thumbnails[0];
+  const detailBrand = document.getElementById('detailBrand');
+  if (detailBrand) detailBrand.textContent = prod.brand;
+  const detailTitle = document.getElementById('detailTitle');
+  if (detailTitle) detailTitle.textContent = prod.name;
+  const detailDescription = document.getElementById('detailDescription');
+  if (detailDescription) detailDescription.textContent = prod.description;
+  const detailRatingNum = document.getElementById('detailRatingNum');
+  if (detailRatingNum) detailRatingNum.textContent = prod.rating;
+  const detailRatingCount = document.getElementById('detailRatingCount');
+  if (detailRatingCount) detailRatingCount.textContent = `(구매평 ${prod.reviewsCount})`;
+  
+  const detailDiscount = document.getElementById('detailDiscount');
+  if (detailDiscount) detailDiscount.textContent = prod.discount;
+  const detailOriginalPrice = document.getElementById('detailOriginalPrice');
+  if (detailOriginalPrice) detailOriginalPrice.textContent = `${prod.originalPrice.toLocaleString()}원`;
+  const detailPrice = document.getElementById('detailPrice');
+  if (detailPrice) detailPrice.textContent = prod.price.toLocaleString();
+  const detailBenefit = document.getElementById('detailBenefit');
+  if (detailBenefit) detailBenefit.innerHTML = `네이버페이 포인트 최대 <strong>${Math.round(prod.price * 0.05).toLocaleString()}원</strong> 적립 (기본 적립 + 충전 결제 시)`;
 
   // 4개의 썸네일 리스트 빌드 (상세 이미지 혼합 없이 오직 제품대표이미지만 사용)
   const thumbContainer = document.getElementById('detailThumbnailList');
