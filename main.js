@@ -7,24 +7,24 @@
 const productsData = {
   tiktok01: {
     id: 'tiktok01',
-    name: 'TIKTOK Object 01 — 감성 아날로그 테이블 락',
-    engName: 'TIKTOK Analog Table Rock',
+    name: 'TIKTOK Object — 어린이 시간 관리 세라믹 오브제',
+    engName: 'TIKTOK Kids Time Ceramic Manager',
     brand: 'TIKTOK',
     price: 189000,
     originalPrice: 220000,
     discount: '15%',
     rating: 4.9,
     reviewsCount: 42,
-    description: '공간의 흐름을 부드럽게 가다듬는 TIKTOK의 첫 번째 시그니처 세라믹 디자인 오브제입니다.',
+    description: '아이들의 규칙적인 생활 습관 형성과 주도적 몰입을 돕는 TIKTOK의 프리미엄 어린이 전용 시간 관리 세라믹 오브제입니다. 모래시계처럼 직관적으로 흐르는 시간의 시각화를 통해 스스로 집중의 재미를 터득할 수 있도록 빚어낸 조형 디자인 제품입니다.',
     options: [
       { name: 'Chalk White (매트 화이트 마감)', val: 'Chalk White' },
       { name: 'Stone Gray (거친 돌 텍스처 마감)', val: 'Stone Gray' }
     ],
     thumbnails: [
-      '제품3/1.png',
-      '제품3/2.png',
-      '제품3/3.png',
-      '제품3/4.png'
+      '메인제품/1.png',
+      '메인제품/2.png',
+      '메인제품/3.png',
+      '메인제품/4.png'
     ],
     detailImages: [
       '상세페이지/1.png',
@@ -48,108 +48,93 @@ const productsData = {
   },
   tiktok02: {
     id: 'tiktok02',
-    name: 'TIKTOK Object 02 — 미니멀 코스탈 드립 트레이',
-    engName: 'TIKTOK Coastal Drip Tray',
+    name: 'OLIGIO — 고주파 피부미용 의료기기',
+    engName: 'OLIGIO High-Frequency Skincare System',
     brand: 'TIKTOK',
-    price: 145000,
-    originalPrice: 161000,
-    discount: '10%',
+    price: 50000000,
+    originalPrice: 55000000,
+    discount: '9%',
     rating: 4.8,
     reviewsCount: 35,
-    description: '자연스러운 해안선의 실루엣을 모티브로 빚어낸 프리미엄 테이블 탑 트레이 스탠드입니다.',
+    description: '전문가 수준의 고주파 에너지를 통해 집에서도 완성도 높은 피부 탄력과 활력을 선사하는 프리미엄 뷰티 홈 디바이스.',
     options: [
-      { name: 'Sand Beige (모래 사장 베이지)', val: 'Sand Beige' },
-      { name: 'Coral Pink (산호 적색)', val: 'Coral Pink' }
+      { name: 'Standard Edition (정품 보증서 동봉)', val: 'Standard' }
     ],
     thumbnails: [
-      '제품3/2.png',
-      '제품3/1.png',
-      '제품3/3.png',
-      '제품3/4.png'
+      '제품1/4.png',
+      '제품1/4.png',
+      '제품1/4.png',
+      '제품1/4.png'
     ],
     detailImages: [
-      '상세페이지/3.png',
-      '상세페이지/4.png',
-      '상세페이지/5.png',
-      '상세페이지/6.png',
-      '상세페이지/7.png',
-      '상세페이지/8.png'
+      '제품1/4.png'
     ],
     reviews: [
-      { id: 'water_***', date: '2026.06.11', option: 'Sand Beige', rating: '★★★★★', text: '테이블 위의 소품들을 정돈하기 위해 샀는데 수분 흡수도 잘 되고 질감도 따뜻하여 매우 만족하며 사용하고 있습니다.' }
+      { id: 'skin_***', date: '2026.06.11', option: 'Standard', rating: '★★★★★', text: '클리닉에서 관리받던 느낌을 집에서 매일 경험하고 있습니다. 탄력 관리에 아주 훌륭한 디바이스네요.' }
     ],
     qna: [
-      { status: '답변완료', title: '배송 시 파손 우려는 없나요?', author: 'safety_***', date: '2026.06.05', answer: '안녕하세요! TIKTOK의 모든 조형 세라믹 제품은 파손 방지를 위해 특수 커스텀 패키징 및 삼중 완충재 포장으로 전 배송 구역 안전 배송을 보장하고 있습니다.' }
+      { status: '답변완료', title: '무상 A/S 보증 기간이 어떻게 되나요?', author: 'safety_***', date: '2026.06.05', answer: '안녕하세요! 본 고주파 디바이스는 구매일로부터 2년간 무상 수리 및 전국 정밀 진단 케어 서비스가 제공됩니다.' }
     ]
   },
   tiktok03: {
     id: 'tiktok03',
-    name: 'TIKTOK Object 03 — 오로라 스마트 무드 오브제',
-    engName: 'TIKTOK Aurora Mood Object',
+    name: 'NAME — 프리미엄 세라믹 명함꽂이',
+    engName: 'NAME Ceramic Card Holder',
     brand: 'TIKTOK',
-    price: 168000,
-    originalPrice: 191000,
-    discount: '12%',
+    price: 38000,
+    originalPrice: 45000,
+    discount: '15%',
     rating: 5.0,
     reviewsCount: 29,
-    description: '구름과 안개의 유기적 흐름을 빛의 스펙트럼으로 투사하는 스마트 라이팅 디바이스입니다.',
+    description: '데스크 위의 비즈니스 품격을 한 차원 높여주고 감각적인 첫인상을 선사하는 미니멀 세라믹 명함 거치대.',
     options: [
-      { name: 'Pure Cirrus (화이트 실크 마감)', val: 'Pure Cirrus' },
-      { name: 'Deep Nimbus (블랙 스모크 마감)', val: 'Deep Nimbus' }
+      { name: 'Pure White (무광 화이트)', val: 'Pure White' },
+      { name: 'Charcoal Black (스톤 블랙)', val: 'Charcoal Black' }
     ],
     thumbnails: [
-      '제품3/3.png',
-      '제품3/1.png',
-      '제품3/2.png',
-      '제품3/4.png'
+      '제품2/엽서2.png',
+      '제품2/엽서2.png',
+      '제품2/엽서2.png',
+      '제품2/엽서2.png'
     ],
     detailImages: [
-      '상세페이지/1.png',
-      '상세페이지/2.png',
-      '상세페이지/5.png',
-      '상세페이지/6.png',
-      '상세페이지/7.png',
-      '상세페이지/8.png'
+      '제품2/엽서2.png'
     ],
     reviews: [
-      { id: 'aurora***', date: '2026.06.16', option: 'Pure Cirrus', rating: '★★★★★', text: '밤마다 방 안에 오로라가 치는 느낌이라 눈이 즐겁고 힐링이 됩니다. 웰빙 무드 라이트용으로 최고네요.' }
+      { id: 'desk_***', date: '2026.06.16', option: 'Pure White', rating: '★★★★★', text: '사무실 책상에 올려두기 좋은 훌륭한 데스크테리어 제품입니다. 견고하고 마감이 고급스러워요.' }
     ],
     qna: [
-      { status: '답변완료', title: '스마트폰 전용 어플 연동 방식인가요?', author: 'app_m***', date: '2026.06.10', answer: '안녕하세요, 고객님! 본 조명 오브제는 전용 TIKTOK 스마트 가이드 앱(iOS 및 Android 지원)을 다운받아 간편하게 블루투스/Wi-Fi로 멀티 페어링 제어가 가능합니다.' }
+      { status: '답변완료', title: '수납 가능한 명함 개수가 몇 개 정도인가요?', author: 'biz_***', date: '2026.06.10', answer: '안녕하세요! 본 오피스 세라믹 거치대는 명함 규격 기준 약 25~30장 내외를 안정적이고 깔끔하게 보관하실 수 있도록 홈이 가공되어 있습니다.' }
     ]
   },
   tiktok04: {
     id: 'tiktok04',
-    name: 'TIKTOK Object 04 — 사운드스케이프 스마트 스피커',
-    engName: 'TIKTOK Soundscape Smart Speaker',
+    name: '시선 — 스마트 식물관리기기',
+    engName: 'Siseon Smart Plant Care IoT Hub',
     brand: 'TIKTOK',
-    price: 219000,
-    originalPrice: 250000,
-    discount: '12%',
+    price: 200000,
+    originalPrice: 230000,
+    discount: '13%',
     rating: 4.8,
     reviewsCount: 31,
-    description: '도자 울림통 설계를 통해 입체적인 자연 음향과 백색소음을 방 안 전체에 확산시키는 감성 스피커입니다.',
+    description: '조도 센싱과 토양의 온습도를 정밀하게 측정하여 스마트폰 앱으로 생장 상태를 리포트해 주는 IoT 스마트 식물 케어 도우미.',
     options: [
-      { name: 'Clay White (백자 화이트 마감)', val: 'Clay White' },
-      { name: 'Volcanic Ash (화산재 매트 블랙)', val: 'Volcanic Ash' }
+      { name: 'IoT Premium Edition (전용 앱 가이드 포함)', val: 'Premium' }
     ],
     thumbnails: [
-      '제품3/4.png',
-      '제품3/1.png',
-      '제품3/2.png',
-      '제품3/3.png'
+      '제품3/Instagram post - 63.png',
+      '제품3/Instagram post - 63.png',
+      '제품3/Instagram post - 63.png',
+      '제품3/Instagram post - 63.png'
     ],
     detailImages: [
-      '상세페이지/2.png',
-      '상세페이지/4.png',
-      '상세페이지/6.png',
-      '상세페이지/8.png'
+      '제품3/Instagram post - 63.png'
     ],
     reviews: [
-      { id: 'speaker***', date: '2026.06.14', option: 'Clay White', rating: '★★★★★', text: '소리가 도자기 통 안에서 한 번 울려 퍼져서 그런지 중저음 소리가 엄청 부드럽고 편안하게 들립니다. 디자인도 너무 튀지 않고 은은해서 공간과 잘 융합됩니다.' }
+      { id: 'plant_***', date: '2026.06.14', option: 'Premium', rating: '★★★★★', text: '식물이 자꾸 시들어서 고민이었는데 실시간 알림 기능 덕분에 적절한 때에 물을 줄 수 있어 키우는 보람이 있습니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '무선 블루투스 연결 규격이 어떻게 되나요?', author: 'blue_***', date: '2026.06.03', answer: '안녕하세요! 본 오디오 디바이스는 최신 Bluetooth 5.3 버전을 탑재하여 혼선이나 끊김 없이 고음질 음원을 안정적으로 무선 재생하실 수 있습니다.' }
+      { status: '답변완료', title: '생활 방수를 지원하는지 궁금합니다.', author: 'blue_***', date: '2026.06.03', answer: '안녕하세요! 본 IoT 화분 케어 기기는 IP65 등급의 생활 방수를 보장하여 실외 테라스나 일반 분무 사용 시 무리 없이 안정적인 수치를 리포팅합니다.' }
     ]
   }
 };
