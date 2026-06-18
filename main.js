@@ -7,15 +7,15 @@
 const productsData = {
   tiktok01: {
     id: 'tiktok01',
-    name: 'TIKTOK Object — 어린이 시간 관리 세라믹 오브제',
-    engName: 'TIKTOK Kids Time Ceramic Manager',
+    name: 'TIKTOK Object — 어린이 시간 관리 오브제',
+    engName: 'TIKTOK Kids Time Visual Manager',
     brand: 'TIKTOK',
     price: 189000,
     originalPrice: 220000,
     discount: '15%',
     rating: 4.9,
     reviewsCount: 42,
-    description: '아이들의 규칙적인 생활 습관 형성과 주도적 몰입을 돕는 TIKTOK의 프리미엄 어린이 전용 시간 관리 세라믹 오브제입니다. 모래시계처럼 직관적으로 흐르는 시간의 시각화를 통해 스스로 집중의 재미를 터득할 수 있도록 빚어낸 조형 디자인 제품입니다.',
+    description: '아이들의 규칙적인 생활 습관 형성과 주도적 몰입을 돕는 TIKTOK의 프리미엄 어린이 전용 시간 관리 오브제입니다. 모래시계처럼 직관적으로 흐르는 시간의 시각화를 통해 스스로 집중의 재미를 터득할 수 있도록 빚어낸 조형 디자인 제품입니다.',
     options: [
       { name: 'Chalk White (매트 화이트 마감)', val: 'Chalk White' },
       { name: 'Stone Gray (거친 돌 텍스처 마감)', val: 'Stone Gray' }
@@ -43,7 +43,7 @@ const productsData = {
       { id: 'object_***', date: '2026.06.02', option: 'Stone Gray', rating: '★★★★★', text: '스톤 그레이 마감이 아주 독특하고 묵직한 조형미가 느껴집니다. 화분이나 도자기 옆에 두면 예술적 감성이 배가됩니다.' }
     ],
     qna: [
-      { status: '답변완료', title: '제품 표면 오염 시 물세척이 가능한가요?', author: 'clean_***', date: '2026.06.14', answer: '안녕하세요, 고객님! TIKTOK Object는 친환경 세라믹 코팅 마감이 되어 있어 가벼운 물티슈나 흐르는 물에 헹구어 관리하실 수 있습니다. 거친 솔 사용은 삼가 주시기 바랍니다.' }
+      { status: '답변완료', title: '제품 표면 오염 시 물세척이 가능한가요?', author: 'clean_***', date: '2026.06.14', answer: '안녕하세요, 고객님! TIKTOK Object는 친환경 특수 코팅 마감이 되어 있어 가벼운 물티슈나 흐르는 물에 헹구어 관리하실 수 있습니다. 거친 솔 사용은 삼가 주시기 바랍니다.' }
     ]
   },
   tiktok02: {
@@ -78,15 +78,15 @@ const productsData = {
   },
   tiktok03: {
     id: 'tiktok03',
-    name: 'NAME — 프리미엄 세라믹 명함꽂이',
-    engName: 'NAME Ceramic Card Holder',
+    name: 'NAME — 프리미엄 명함꽂이',
+    engName: 'NAME Card Holder',
     brand: 'TIKTOK',
     price: 38000,
     originalPrice: 45000,
     discount: '15%',
     rating: 5.0,
     reviewsCount: 29,
-    description: '데스크 위의 비즈니스 품격을 한 차원 높여주고 감각적인 첫인상을 선사하는 미니멀 세라믹 명함 거치대.',
+    description: '데스크 위의 비즈니스 품격을 한 차원 높여주고 감각적인 첫인상을 선사하는 미니멀 명함 거치대.',
     options: [
       { name: 'Pure White (무광 화이트)', val: 'Pure White' },
       { name: 'Charcoal Black (스톤 블랙)', val: 'Charcoal Black' }
@@ -104,7 +104,7 @@ const productsData = {
       { id: 'desk_***', date: '2026.06.16', option: 'Pure White', rating: '★★★★★', text: '사무실 책상에 올려두기 좋은 훌륭한 데스크테리어 제품입니다. 견고하고 마감이 고급스러워요.' }
     ],
     qna: [
-      { status: '답변완료', title: '수납 가능한 명함 개수가 몇 개 정도인가요?', author: 'biz_***', date: '2026.06.10', answer: '안녕하세요! 본 오피스 세라믹 거치대는 명함 규격 기준 약 25~30장 내외를 안정적이고 깔끔하게 보관하실 수 있도록 홈이 가공되어 있습니다.' }
+      { status: '답변완료', title: '수납 가능한 명함 개수가 몇 개 정도인가요?', author: 'biz_***', date: '2026.06.10', answer: '안녕하세요! 본 오피스 명함 거치대는 명함 규격 기준 약 25~30장 내외를 안정적이고 깔끔하게 보관하실 수 있도록 홈이 가공되어 있습니다.' }
     ]
   },
   tiktok04: {
@@ -117,7 +117,7 @@ const productsData = {
     discount: '13%',
     rating: 4.8,
     reviewsCount: 31,
-    description: '조도 센싱과 토양의 온습도를 정밀하게 측정하여 스마트폰 앱으로 생장 상태를 리포트해 주는 IoT 스마트 식물 케어 도우미.',
+    description: '조도 센싱 and 토양의 온습도를 정밀하게 측정하여 스마트폰 앱으로 생장 상태를 리포트해 주는 IoT 스마트 식물 케어 도우미.',
     options: [
       { name: 'IoT Premium Edition (전용 앱 가이드 포함)', val: 'Premium' }
     ],
